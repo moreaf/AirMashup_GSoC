@@ -196,5 +196,23 @@
         </LineString>
       </Placemark>
     </Folder>
+    <Folder>
+      <name>Aeronautic Navigation Chart</name>
+      <description>Navigation Charts overlayed over the terrain.</description>
+      <GroundOverlay>
+        <name>AIP Spain North-East</name>
+        <description>Navigation Chart of North-East Spain</description>
+        <Icon>
+          <href>/Users/Albert/desktop/test2.jpg</href>
+        </Icon>
+        <LatLonBox>
+          <north>42.519627</north>
+          <south>40.069665</south>
+          <east>3.339639</east>
+          <west>-2.638096</west>
+          <rotation>0</rotation>
+        </LatLonBox>
+      </GroundOverlay>
+    </Folder>
   </Document>
 </kml>
