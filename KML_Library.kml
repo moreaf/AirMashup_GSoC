@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Test GSoC</name>
+    <open>1</open>
+    <description>Unleash your creativity with the help of these examples!</description>
+    <Style id="downArrowIcon">
+      <IconStyle>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pal4/icon28.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="globeIcon">
+      <IconStyle>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pal3/icon19.png</href>
+        </Icon>
+      </IconStyle>
+      <LineStyle>
+        <width>2</width>
+      </LineStyle>
+    </Style>
+    <Style id="transPurpleLineGreenPoly">
+      <LineStyle>
+        <color>7fff00ff</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7f00ff00</color>
+      </PolyStyle>
+    </Style>
+    <Style id="yellowLineGreenPoly">
+      <LineStyle>
+        <color>7f00ffff</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7f00ff00</color>
+      </PolyStyle>
+    </Style>
+    <Style id="thickBlackLine">
+      <LineStyle>
+        <color>87000000</color>
+        <width>10</width>
+      </LineStyle>
+    </Style>
+    <Style id="redLineBluePoly">
+      <LineStyle>
+        <color>ff0000ff</color>
+      </LineStyle>
+      <PolyStyle>
+        <color>ffff0000</color>
+      </PolyStyle>
+    </Style>
+    <Style id="blueLineRedPoly">
+      <LineStyle>
+        <color>ffff0000</color>
+      </LineStyle>
+      <PolyStyle>
+        <color>ff0000ff</color>
+      </PolyStyle>
+    </Style>
+    <Style id="transRedPoly">
+      <LineStyle>
+        <width>1.5</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7d0000ff</color>
+      </PolyStyle>
+    </Style>
+    <Style id="transBluePoly">
+      <LineStyle>
+        <width>1.5</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7dff0000</color>
+      </PolyStyle>
+    </Style>
+    <Style id="transGreenPoly">
+      <LineStyle>
+        <width>1.5</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7d00ff00</color>
+      </PolyStyle>
+    </Style>
+    <Style id="transYellowPoly">
+      <LineStyle>
+        <width>1.5</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7d00ffff</color>
+      </PolyStyle>
+    </Style>
+    <Style id="noDrivingDirections">
+      <BalloonStyle>
+        <text><![CDATA[
+          <b>$[name]</b>
+          <br /><br />
+          $[description]
+        ]]></text>
+      </BalloonStyle>
+    </Style>
+    <Folder>
+      <name>Airports Available</name>
+      <description>These are just some airports available for the simulation!</description>
+      <LookAt>
+        <longitude>10.478509</longitude>
+        <latitude>45.717848</latitude>
+        <altitude>4000000</altitude>
+        <heading>0</heading>
+        <tilt>10</tilt>
+        <range>50000</range>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </LookAt>
+      <Placemark>
+        <name>Barcelona - El Prat Airport (LEBL/BCN)</name>
+        <description>This is the Barcelona - El Prat International Airport.</description>
+        <LookAt>
+          <longitude>2.082804</longitude>
+          <latitude>41.297640</latitude>
+          <altitude>0</altitude>
+          <heading>0</heading>
+          <tilt>40.5575073395506</tilt>
+          <range>10000</range>
+        </LookAt>
+        <Point>
+          <coordinates>2.082804,41.297640,8000</coordinates>
+          <altitudeMode>absolute</altitudeMode>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tenerife Norte Airport (GCXO/TFN)</name>
+        <description>This is the Tenerife Norte - Los Rodeos International Airport.</description>
+        <visibility>0</visibility>
+        <LookAt>
+          <longitude>-16.343424</longitude>
+          <latitude>28.484380</latitude>
+          <altitude>0</altitude>
+          <heading>0</heading>
+          <tilt>40.5575073395506</tilt>
+          <range>8000</range>
+        </LookAt>
+        <Point>
+          <coordinates>-16.343424,28.484380,0</coordinates>
+          <altitudeMode>absolute</altitudeMode>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Airways</name>
+      <visibility>0</visibility>
+      <description>Here are some routes already established between the indexed airports.</description>
+      <Placemark>
+        <name>Barcelona - Tenerife (BCN - TFN)</name>
+        <description>This is the flightpath to fly from BCN to TFN. The cruise altitude is above 11 km.</description>
+        <Style id ="redPoly">
+          <LineStyle>
+            <color>ff0000ff</color>
+            <width>4</width>
+          </LineStyle>
+        </Style>
+        <LineString>
+          <extrude>1</extrude>
+          <tessellate>1</tessellate>
+          <altitudeMode>absolute</altitudeMode>
+          <coordinates>
+            2.078300,41.296900,3.6576
+            1.003000,40.549700,10058.4
+            0.588200,40.257900,10058.4
+            0.236100,40.006900,10058.4
+            -0.004700,39.833800,10058.4
+            -0.483100,39.485600,10058.4
+            -0.856800,39.266000,10058.4
+            -1.263000,39.024400,10058.4
+            -1.768900,38.719100,10058.4
+            -2.092800,38.521100,10058.4
+            -2.352500,38.360800,10058.4
+            -2.895000,37.954600,10058.4
+            -3.185200,37.734400,10058.4
+            -3.630900,37.392200,10058.4
+            -4.369600,36.814300,10058.4
+            -4.893500,36.150400,10058.4
+            -5.143600,35.833300,10058.4
+            -6.746400,34.049900,10058.4
+            -7.738300,34.187200,10058.4
+            -8.276100,34.320300,10058.4
+            -8.789200,34.444400,10058.4
+            -10.136400,33.015300,10058.4
+            -11.277500,31.753900,10058.4
+            -12.373300,30.505800,10058.4
+            -12.717200,30.104200,10058.4
+            -16.341700,28.482800,632.7648
+             </coordinates>
+        </LineString>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Aeronautic Navigation Chart</name>
+      <description>Navigation Charts overlayed over the terrain.</description>
+      <GroundOverlay>
+        <name>AIP Spain North-East</name>
+        <description>Navigation Chart of North-East Spain</description>
+        <Icon>
+          <href>http://192.168.86.37:9000//images//test2.jpg</href>
+        </Icon>
+        <LatLonBox>
+          <north>42.519627</north>
+          <south>40.069665</south>
+          <east>3.339639</east>
+          <west>-2.638096</west>
+          <rotation>0</rotation>
+        </LatLonBox>
+      </GroundOverlay>
+    </Folder>
+  </Document>
+</kml>
