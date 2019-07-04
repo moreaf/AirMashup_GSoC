@@ -25,8 +25,8 @@ def getKML():
         aircraft[i] = [callsign,lat,lon,alt,hdg,hvel,vvel]
 
     # Create an instance of Kml
-    kml = simplekml.Kml(open=1)
-    single_point = kml.newpoint(name="The World", coords=[(0.0,0.0,0.0)])
+    kml = simplekml.kml(open=1)
+    #single_point = kml.newpoint(name="The World", coords=[(0.0,0.0,0.0)])
 
 
     i = 0
@@ -36,7 +36,7 @@ def getKML():
         pnt.id = aircraft[i][0]
         #pnt.description = "Time corresponding to 12:00 noon, Eastern Standard Time: {0}".format(time)
         pnt.coords = [(aircraft[i][2], aircraft[i][1], aircraft[i][3])]
-        pnt.altitudemode = simplekml.AltitudeMode.relativetoground
+        pnt.altitudemode = kml.AltitudeMode.relativetoground
         pnt.style.iconstyle.scale = 0.65
         pnt.style.iconstyle.icon.href = 'http://192.168.86.21:9000//images/redplaneicon.png'
         i = i+1

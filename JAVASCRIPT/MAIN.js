@@ -20,7 +20,7 @@ aircrafts = []
 
 function updateAPI()
 {
-    request('https://moreaf:Morea1234@opensky-network.org/api/states/all?icao24=3424d4', { json: true }, (err, res, body) => 
+    request('https://moreaf:Morea1234@opensky-network.org/api/states/all', { json: true }, (err, res, body) => 
         {
             if (err) 
             { return console.log(err); }
@@ -93,4 +93,3 @@ function updatePlanes()
 
 //setInterval(function(){updateAPI();},5000)
 updateAPI()
-console.log(res)
