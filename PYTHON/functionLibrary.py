@@ -1,6 +1,5 @@
 import math
 import simplekml
-import threading
 
 
 def getPosition1s(aircraft):
@@ -10,8 +9,8 @@ def getPosition1s(aircraft):
     while (i<len(aircraft)-1):
 
         d =  aircraft[i][5] #distance in one second
-        lat = aircraft[i][2]
-        lon = aircraft[i][1]
+        lat = aircraft[i][1]
+        lon = aircraft[i][2]
         alt = aircraft[i][3]
         hdg = aircraft[i][4]
         hvel = aircraft[i][5]
@@ -40,8 +39,8 @@ def getPosition1s(aircraft):
 
         alt2 = alt + vvel
 
-        aircraft[i][2] = lat2
-        aircraft[i][1] = lon2
+        aircraft[i][1] = lat2
+        aircraft[i][2] = lon2
         aircraft[i][3] = alt2
         aircraft[i][4] = hdg
         aircraft[i][5] = hvel
@@ -50,7 +49,9 @@ def getPosition1s(aircraft):
 
 
     kml = simplekml.Kml(open=1)
+
     i = 0
+
     while (i<len(aircraft)-1):
         pnt = kml.newpoint()
         pnt.name = aircraft[i][0]
@@ -58,26 +59,15 @@ def getPosition1s(aircraft):
         pnt.coords = [(aircraft[i][2], aircraft[i][1], aircraft[i][3])]
         pnt.altitudemode = simplekml.AltitudeMode.relativetoground
         pnt.style.iconstyle.scale = 0.65
-        pnt.style.iconstyle.icon.href = 'http://192.168.86.21:9000//images/redplaneicon.png'
+        pnt.style.iconstyle.icon.href = 'http://192.168.1.39:9000//images/redplaneicon.png'
         i = i+1
 
     kml.save("testkml.kml")
-    print('Done')
 
     return aircraft
 
 
-def setInterval1(func,time):
-    e = threading.Event()
-    i = 0
-    while not e.wait(time) and (i<4):
-        func()
-        i = i + 1
 
-def setInterval2(func,time):
-    e = threading.Event()
-    while not e.wait(time):
-        func()
 
 
 
