@@ -62,7 +62,7 @@ def getPosition1s(aircraft):
         pnt.altitudemode = simplekml.AltitudeMode.relativetoground
         pnt.style.iconstyle.scale = 0.65
         pnt.style.iconstyle.heading = aircraft[i][4]
-        pnt.style.iconstyle.icon.href = 'http://192.168.1.39:9000//images/planeicon.png'
+        pnt.style.iconstyle.icon.href = 'http://192.168.86.118:9000//images/planeicon.png'
         i = i+1
 
     kml.save("testkml.kml")
@@ -107,7 +107,7 @@ def getAircraft():
         pnt.altitudemode = simplekml.AltitudeMode.relativetoground
         pnt.style.iconstyle.scale = 0.65
         pnt.style.iconstyle.heading = aircraft[i][4]
-        pnt.style.iconstyle.icon.href = 'http://192.168.1.39:9000//images/planeicon.png'
+        pnt.style.iconstyle.icon.href = 'http://192.168.86.118:9000//images/planeicon.png'
         i = i+1
 
     kml.save("testkml.kml")
