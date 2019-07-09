@@ -60,7 +60,7 @@ def getPosition1s(aircraft):
         #pnt.description = "Time corresponding to 12:00 noon, Eastern Standard Time: {0}".format(time)
         pnt.coords = [(aircraft[i][2], aircraft[i][1], aircraft[i][3])]
         pnt.altitudemode = simplekml.AltitudeMode.relativetoground
-        pnt.style.iconstyle.scale = 0.65
+        pnt.style.iconstyle.scale = 1
         pnt.style.iconstyle.heading = aircraft[i][4]
         pnt.style.iconstyle.icon.href = 'http://192.168.86.118:9000//images/planeicon.png'
         i = i+1
@@ -68,7 +68,6 @@ def getPosition1s(aircraft):
     kml.save("testkml.kml")
 
     return aircraft
-
 
 
 def getAircraft():
@@ -81,7 +80,7 @@ def getAircraft():
     aircraft = [0]*numberOfAircrafts
     #aircraft = np.empty((numberOfAircrafts))
 
-    for i in range (0,numberOfAircrafts-1):
+    for i in range (0,numberOfAircrafts):
         callsign = s.states[i].callsign
         lat = s.states[i].latitude
         lon = s.states[i].longitude
@@ -91,8 +90,8 @@ def getAircraft():
         vvel = s.states[i].vertical_rate
         aircraft[i] = [callsign,lat,lon,alt,hdg,hvel,vvel]
 
+
     #aircraft = ['test',41.4669,-4.9866,12176.76,131.81,235.36,-3.25] #TESTING AIRCRAFT
-    #print(aircraft)
 
     # Create an instance of Kml
 
@@ -105,7 +104,7 @@ def getAircraft():
         #pnt.description = "Time corresponding to 12:00 noon, Eastern Standard Time: {0}".format(time)
         pnt.coords = [(aircraft[i][2], aircraft[i][1], aircraft[i][3])]
         pnt.altitudemode = simplekml.AltitudeMode.relativetoground
-        pnt.style.iconstyle.scale = 0.65
+        pnt.style.iconstyle.scale = 1
         pnt.style.iconstyle.heading = aircraft[i][4]
         pnt.style.iconstyle.icon.href = 'http://192.168.86.118:9000//images/planeicon.png'
         i = i+1
@@ -114,36 +113,42 @@ def getAircraft():
     print('Done API')
 
     i = 25
-    print('API',aircraft[i])
-    time.sleep(1)
+    #print('API',aircraft)
+
+    #time.sleep(1)
 
     getPosition1s(aircraft)
+    print('Done 1s')
 
-    print(aircraft[i])
+    #print(aircraft[i])
 
-    time.sleep(1)
-
-    getPosition1s(aircraft)
-
-    print(aircraft[i])
-
-    time.sleep(1)
+    #time.sleep(1)
 
     getPosition1s(aircraft)
+    print('Done 2s')
 
-    print(aircraft[i])
+    #print(aircraft[i])
 
-    time.sleep(1)
+    #time.sleep(1)
 
     getPosition1s(aircraft)
+    print('Done 3s')
 
-    time.sleep(1)
+    #print(aircraft[i])
+
+    #time.sleep(1)
+
+    getPosition1s(aircraft)
+    print('Done 4s')
+
+    #time.sleep(1)
     print('Done lap')
 
 
 s = sched.scheduler(time.time, time.sleep)
 
-while True:
-    s.enter(0, 1, getAircraft)
-    s.run()
+#while True:
+    #s.enter(0, 1, getAircraft)
+    #s.run()
 
+getAircraft()
