@@ -1,9 +1,13 @@
+import timeit
+
+mysetup = '''
 import sched, time
 import simplekml
 from opensky_api import *
-from functionLibrary import *
-import threading
+'''
 
+
+code = '''
 def getPosition1s(aircraft):
     R = 6371000 #metres
 
@@ -150,3 +154,8 @@ s = sched.scheduler(time.time, time.sleep)
 while True:
     s.enter(0, 1, getAircraft)
     s.run()
+
+
+'''
+
+print (timeit.timeit(setup = mysetup, stmt = code, number = 10000))
