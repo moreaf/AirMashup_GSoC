@@ -203,7 +203,7 @@
         <name>AIP Spain North-East</name>
         <description>Navigation Chart of North-East Spain</description>
         <Icon>
-          <href>http://192.16886.33:9000//test2.jpg</href>
+          <href>http://192.168.86.35:9000//test2.jpg</href>
         </Icon>
         <LatLonBox>
           <north>42.519627</north>
