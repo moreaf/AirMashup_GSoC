@@ -4,6 +4,7 @@ from opensky_api import *
 from functionLibrary import *
 from threading import Thread
 from datetime import datetime
+import time
 
 class Aircraft():
     def __init__(self, callsign,lat,lon,alt,hdg,hvel,vvel):
@@ -34,19 +35,17 @@ def getPosition1s(aircrafts):
     return aircrafts
 
 def getAircraft():
-
+    one = time.time()
     api = OpenSkyApi('moreaf','Morea1234')
     # bbox = (min latitude, max latitude, min longitude, max longitude)
     #bbox=(35.920299, 43.891482, -10.284513, 3.824992
-    while True:
-        print("api call")
-        thread = Thread(target=get_aircrafts_from_api, args =[api])
-        thread.start()
-        time.sleep(6)
-        thread.join()
+    #Europe = bbox=(35.7, 70, -20, 34)
 
-    s = api.get_states()
+    s = api.get_states(bbox=(35.7, 60, -15, 20))
     aircrafts = []
+    two = time.time()
+    totalt= two-one
+    print('api call')
     #aircraft = np.empty((numberOfAircrafts))
 
     for state in s.states:
@@ -54,45 +53,53 @@ def getAircraft():
 
 
     #aircraft = ['test',41.4669,-4.9866,12176.76,131.81,235.36,-3.25] #TESTING AIRCRAFT
+    print(len(aircrafts))
     update_kml(aircrafts)
-
-    print('Done API')
-
-
+    totalt= two-one
+    print('Done API',totalt)
     #print('API',aircraft)
 
-    #time.sleep(1)
-
+    time.sleep(1)
+    one = time.time()
     getPosition1s(aircrafts)
-    print('Done 1s')
+    update_kml(aircrafts)
+    two = time.time()
+    totalt= two-one
+    print('Done 1s',totalt)
 
-    #print(aircraft[i])
+    time.sleep(1)
 
-    #time.sleep(1)
-
+    one = time.time()
     getPosition1s(aircrafts)
-    print('Done 2s')
+    update_kml(aircrafts)
+    two = time.time()
+    totalt= two-one
+    print('Done 2s',totalt)
 
-    #print(aircraft[i])
+    time.sleep(1)
 
-    #time.sleep(1)
-
+    one = time.time()
     getPosition1s(aircrafts)
-    print('Done 3s')
+    update_kml(aircrafts)
+    two = time.time()
+    totalt= two-one
+    print('Done 3s',totalt)
 
-    #print(aircraft[i])
+    time.sleep(1)
 
-    #time.sleep(1)
-
+    one = time.time()
     getPosition1s(aircrafts)
-    print('Done 4s')
+    update_kml(aircrafts)
+    two = time.time()
+    totalt= two-one
+    print('Done 4s',totalt)
 
-    #time.sleep(1)
+    time.sleep(1)
     print('Done lap')
 
 
 def update_kml(aircrafts):
-    kml = simplekml.Kml(open=1)
+    kml = simplekml.Kml()
     for aircraft in aircrafts:
         pnt = kml.newpoint()
         pnt.name = aircraft.callsign
@@ -102,9 +109,10 @@ def update_kml(aircrafts):
         pnt.style.iconstyle.scale = 1
         pnt.style.iconstyle.heading = aircraft.hdg
         pnt.style.iconstyle.icon.href = 'http://192.168.86.35:9000//images/planeicon.png'
-
     kml.save("testkml.kml")
 
-#s = sched.scheduler(time.time, time.sleep)
+s = sched.scheduler(time.time, time.sleep)
 
-getAircraft()
+while True:
+    s.enter(0, 1, getAircraft)
+    s.run()

@@ -7,9 +7,9 @@ import datetime
 def insertToDB(object):
     myclient = pymongo.MongoClient('mongodb://localhost:27017/') #We create the database object
 
-    aircraftsDB = myclient['aircrafts'] #Create a database
+    aircraftsDB = myclient['AirMashupDB'] #Create a database
 
-    mycol = mydb['realtime'] #Create a collection into my mydatabase
+    mycol = mydb['aircrafts'] #Create a collection into my mydatabase
 
     x = mycol.insert_one(object)
 
@@ -90,10 +90,3 @@ def update():
     for i in range(0,6000):
         getPosition1s(aircraft)
     print('Done')
-
-now = time.time()
-update()
-after = time.time()
-sec = after-now
-print(sec)
-#print(timeit.timeit(update()))
