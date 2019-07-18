@@ -9,8 +9,8 @@ import time
 class Aircraft():
     def __init__(self, callsign,lat,lon,alt,hdg,hvel,vvel):
         self.alt = alt if alt is not None else 0
-        self.lat = lat if lat is not None else 0
-        self.lon = lon if lon is not None else 0
+        self.lat = lon if lat is not None else 0
+        self.lon = lat if lon is not None else 0
         self.callsign = callsign if callsign is not None else ""
         self.hdg = hdg if hdg is not None else 0
         self.hvel = hvel if hvel is not None else 0
@@ -108,7 +108,7 @@ def update_kml(aircrafts):
         pnt.altitudemode = simplekml.AltitudeMode.relativetoground
         pnt.style.iconstyle.scale = 1
         pnt.style.iconstyle.heading = aircraft.hdg
-        pnt.style.iconstyle.icon.href = 'http://192.168.86.35:9000//images/planeicon.png'
+        pnt.style.iconstyle.icon.href = 'http://192.168.31.222:9000//images/planeicon.png'
     kml.save("testkml.kml")
 
 s = sched.scheduler(time.time, time.sleep)

@@ -1,33 +1,27 @@
 <template>
-  <v-app>
-    <v-toolbar app dark>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn to="/planes">Info</v-btn>
-    </v-toolbar>
-
-    <v-content>
-      aixo sempre surt
-      <router-view></router-view>
-    </v-content>
-  </v-app>
+  <div id="app">
+    <app-toolbar></app-toolbar>
+      <router-view/>
+    <app-footer style="position:absolute;z-index:-1"> </app-footer>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
+import AppFooter from './components/AppFooter'
+import AppToolbar from './components/AppToolbar'
+import Aircrafts from './components/Aircrafts'
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  },
-  data () {
-    return {
-      //
-    }
-  }
+  components:{AppToolbar,AppFooter,Aircrafts}
 }
 </script>
+
+<style>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+</style>
