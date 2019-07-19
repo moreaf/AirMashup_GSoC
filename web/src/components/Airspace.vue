@@ -1,29 +1,21 @@
 <template>
   <v-layout mt-5 mb-5
   justify-space-between="">
-    <v-flex xs12 sm6 offset-sm3>
-
-       <v-card  v-for="airport in airports" v-bind:key="airport.id" class="xxx indigo">
+    <v-flex xs-2>
+       <v-card  v-for="airport in airports" v-bind:key="airport.id" class="xxx indigo elevation-20">
         <img
           class="white--text"
           width="100%"
           :src= "airport.img">
           <v-container fill-height fluid>
             <v-layout fill-height>
-              <v-flex xs12 align-end flexbox >
-                <span class="white--text headline" >{{ airport.name }} </span>
+              <v-flex align-end flexbox >
+                <span class="white--text display-1 font-weight-bold justify-center align-center" >{{ airport.name }} </span>
               </v-flex>
             </v-layout>
           </v-container>
-        
-        <!-- <v-card-title>
-          <div>
-            <span>Lleida, Catalonia, Spain</span><br>
-            <span></span>
-          </div>
-        </v-card-title> -->
-        <v-card-actions class="justify-space-around">
-          <v-btn  color="yellow darken-4" @click="sendKML(airport.id)" >OLS </v-btn>
+        <v-card-actions class="align-center justify-space-around">
+          <v-btn class ="elevation-20 mb-3" color="yellow darken-4" @click="sendKML(airport.id)" >LAUNCH OLS</v-btn>
           <!-- <v-btn flat color="orange">Explore</v-btn> -->
         </v-card-actions>
       </v-card>
@@ -33,13 +25,13 @@
 
 <style>
 .xxx{
-    margin: 20px 0px 0px 10px;
+    margin: 20px;
 }
 </style>
 <script>
 import axios from 'axios'
-import image from  '@/assets/AIRPORTS/LEDA.jpg'
-import image2 from '@/assets/AIRPORTS/LEBL.jpg'
+// import image from  '@/assets/AIRPORTS/LEDA.jpg'
+// import image2 from '@/assets/AIRPORTS/LEBL.jpg'
 
 export default {
     data: () => {
@@ -83,4 +75,3 @@ export default {
     }
 }
 </script>
-

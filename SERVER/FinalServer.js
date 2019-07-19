@@ -10,9 +10,14 @@ app.use(function(req, res, next) {
   next();
 });
 var sendAir = []
+
+// var airports = JSON.parse(fs.readFileSync('/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/data.txt', 'utf8'));
+
 var  airports = [
-            {id:0,name:'LLEIDA-ALGUAIRE AIRPORT', kml: '/Users/albert/Desktop/AirMashup_GSoC/web/src/assets/SSAA/LEBL.kml' , img: '/Users/albert/Desktop/AirMashup_GSoC/web/src/assets/AIRPORTS/LEDA.jpg'},
-            {id:1, name:'BARCELONA-EL PRAT AIRPORT', kml: '/Users/albert/Desktop/AirMashup_GSoC/web/src/assets/SSAA/LEBL.kml', img: '/Users/albert/Desktop/AirMashup_GSoC/web/src/assets/AIRPORTS/LEBL.jpg' },
+            {id:0,name:'LLEIDA-ALGUAIRE AIRPORT', kml: '/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/SSAA/LEBL.kml' , img: '/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/AIRPORTS/LEDA.jpg'},
+            {id:1, name:'BARCELONA-EL PRAT AIRPORT', kml: '/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/SSAA/LEBL.kml', img: '/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/AIRPORTS/LEBL.jpg' },
+            {id:2, name:"GIRONA-COSTA BRAVA AIRPORT",kml:"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/SSAA/LEGE.kml",img:"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/AIRPORTS/LEGE.jpg"},
+            {id:3, name:"SABADELL AIRPORT", kml:"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/SSAA/LELL.kml",img:"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/AIRPORTS/LELL.jpg"}
 ]
 
 app.get('/change/:id',function(req,response){
