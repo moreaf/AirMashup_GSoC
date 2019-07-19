@@ -11,8 +11,8 @@ app.use(function(req, res, next) {
 });
 var sendAir = []
 var  airports = [
-            {id:0,name:'Lleida-Alguaire Airport', kml: '/Users/albert/Desktop/AirMashup_GSoC/web2/webtest/src/assets/SSAA/LEDA.kml' , img: '/Users/albert/Desktop/eric.jpg'},
-            {id:1, name:'Barcelona-El Prat Airport', kml: '/Users/albert/Desktop/AirMashup_GSoC/web2/webtest/src/assets/SSAA/LEBL.kml', img: '/Users/albert/Desktop/AirMashup_GSoC/web2/webtest/src/assets/AIRPORTS/LEBL.jpg' },
+            {id:0,name:'LLEIDA-ALGUAIRE AIRPORT', kml: '/Users/albert/Desktop/AirMashup_GSoC/web/src/assets/SSAA/LEBL.kml' , img: '/Users/albert/Desktop/AirMashup_GSoC/web/src/assets/AIRPORTS/LEDA.jpg'},
+            {id:1, name:'BARCELONA-EL PRAT AIRPORT', kml: '/Users/albert/Desktop/AirMashup_GSoC/web/src/assets/SSAA/LEBL.kml', img: '/Users/albert/Desktop/AirMashup_GSoC/web/src/assets/AIRPORTS/LEBL.jpg' },
 ]
 
 app.get('/change/:id',function(req,response){
@@ -23,6 +23,7 @@ app.get('/change/:id',function(req,response){
 })
 
 app.get('/getAirports',function(req,res){
+  console.log(req)
   renderPlanes()
   .then(function(data){
     console.log("data",data)
