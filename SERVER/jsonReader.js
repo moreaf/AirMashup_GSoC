@@ -1,8 +1,8 @@
 var fs = require('fs');
 
 
-var airports1 = fs.readFile('/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/data.txt', 'utf8');
-console.log(airports1)
+var airports1 = fs.readFileSync('/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/data.txt', 'utf8');
+console.log(JSON.parse(airports1))
 
 
 var  airports2 = [

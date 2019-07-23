@@ -4,6 +4,9 @@ import AppHome from '@/components/AppHome'
 import AppLogin from '@/components/AppLogin'
 import Aircrafts from '@/components/Aircrafts'
 import Airspace from '@/components/Airspace'
+import FlightRoutes from '@/components/FlightRoutes'
+import SpainRoutes from '@/components/SpainRoutes'
+import IntRoutes from '@/components/IntRoutes'
 
 Vue.use(Router)
 
@@ -30,6 +33,21 @@ export default new Router({
       path: '/airspace',
       name: 'Airspace',
       component: Airspace
+    },
+    {
+      path: '/flightroutes',
+      name: 'FlightRoutes',
+      component: FlightRoutes
+    },
+    {
+      path: '/spainairroutes',
+      name: 'SpainRoutes',
+      component: SpainRoutes
+    },
+    {
+      path: '/intairroutes',
+      name: 'IntRoutes',
+      component: IntRoutes
     }
   ]
 })

@@ -1,0 +1,12 @@
+[
+  {
+    "id":0,
+    "name":"INTERNATIONAL",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/OTHERS/intflights.png"
+  },
+  {
+    "id":1,
+    "name":"SPAIN",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/OTHERS/spain.png"
+  }
+]

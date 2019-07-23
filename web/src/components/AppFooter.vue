@@ -1,18 +1,30 @@
 <template>
   <v-footer
     height="auto"
-    color="indigo">
+    color="white">
     <v-content>
       <v-layout
         >
-          <v-flex pa-3>
-            <img src="@/assets/lg.png" width = '12%' aspect-ratio=1.7>
-          </v-flex>
+          <!-- <v-flex pa-3>
+            <img src="@/assets/airmashup.png" width = '8%' aspect-ratio=1.7>
+          </v-flex> -->
       </v-layout>
+      <v-layout
+        >
+          <!-- <v-flex pa-3>
+            <img src="@/assets/lg.png" width = '12%' aspect-ratio=1.7>
+          </v-flex> -->
+      </v-layout> -->
       <v-layout
         align-center
         justify-space-between
         row>
+          <v-flex ma-3 ml-5>
+            <img src="@/assets/logoAM.png" width = '80%' aspect-ratio=1.7>
+          </v-flex>
+          <v-flex>
+            <img src="@/assets/lg.png" width = '50%' aspect-ratio=1.7>
+          </v-flex>
           <v-flex xs3>
             <img src="@/assets/lglab.png" width="90%" >
           </v-flex >
@@ -34,7 +46,7 @@
         row
         wrap
       >
-        <v-btn
+        <!-- <v-btn
           v-for="link in links"
           :key="link"
           color="white"
@@ -42,12 +54,12 @@
           round
         >
           {{ link }}
-        </v-btn>
+        </v-btn> -->
         <v-flex
           primary
-          lighten-2
           py-3
           text-xs-center
+          indigo
           white--text
           xs12
         >
@@ -61,12 +73,12 @@
 <script>
   export default {
     data: () => ({
-      links: [
-        'Home',
-        'About AirMashup',
-        'About Liquid Galaxy Lab',
-        'Contact Us'
-      ]
+      // links: [
+      //   'Home',
+      //   'About AirMashup',
+      //   'About Liquid Galaxy Lab',
+      //   'Contact Us'
+      // ]
     })
   }
 </script>
