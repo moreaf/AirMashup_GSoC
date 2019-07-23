@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>GCLP to LEBL</name>
+    <description>GRAN CANARIA to BARCELONA/EL PRAT</description>
+    <Style id="redPoly">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>4</width>
+      </LineStyle>
+    </Style>
+    <Placemark>
+      <name>GCLP to LEBL</name>
+      <description>GRAN CANARIA to BARCELONA/EL PRAT</description>
+      <styleUrl>#redPoly</styleUrl>
+      <LineString>
+        <extrude>1</extrude>
+        <tesselate>1</tesselate>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>-15.386700,27.931900,23.7744
+-12.578300,29.731400,10058.4
+-12.101900,30.012200,10058.4
+-9.686900,31.401300,10058.4
+-8.366700,33.194700,10058.4
+-6.701100,35.345800,10058.4
+-6.492500,35.445300,10058.4
+-5.890800,35.728800,10058.4
+-5.666700,35.833300,10058.4
+-5.243000,36.004100,10058.4
+-4.893500,36.150400,10058.4
+-4.369600,36.814300,10058.4
+-3.630900,37.392200,10058.4
+-3.185200,37.734400,10058.4
+-2.895000,37.954600,10058.4
+-2.352500,38.360800,10058.4
+-2.092800,38.521100,10058.4
+-1.768900,38.719100,10058.4
+-1.263000,39.024400,10058.4
+-0.856800,39.266000,10058.4
+-0.483100,39.485600,10058.4
+0.143000,40.230800,10058.4
+0.265500,40.556600,10058.4
+2.078300,41.296900,3.6576000000000004
+</coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>

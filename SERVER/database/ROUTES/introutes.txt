@@ -1,0 +1,32 @@
+[
+  {
+    "id":0,
+    "name":"BARCELONA (LEBL) - KEFLAVÍK (BIKF)",
+    "kml":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/ROUTES/INTROUTES/LEBL-BIKF.kml",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/ROUTES/INTROUTES/IMAGES/LEBL-BIKF.png"
+  },
+  {
+    "id":1,
+    "name":"BARCELONA (LEBL) - TORONTO (CYTZ)",
+    "kml":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/ROUTES/INTROUTES/LEBL-CYTZ.kml",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/ROUTES/INTROUTES/IMAGES/LEBL-CYTZ.png"
+  },
+  {
+    "id":2,
+    "name":"BARCELONA (LEBL) - BERLIN (EDDB)",
+    "kml":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/ROUTES/INTROUTES/LEBL-EDDB.kml",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/ROUTES/INTROUTES/IMAGES/LEBL-EDDB.png"
+  },
+  {
+    "id":3,
+    "name":"BARCELONA (LEBL) - BUENOS AIRES (SAEZ)",
+    "kml":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/ROUTES/INTROUTES/LEBL-SAEZ.kml",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/ROUTES/INTROUTES/IMAGES/LEBL-SAEZ.png"
+  },
+  {
+    "id":4,
+    "name":"BARCELONA (LEBL) - BANGKOK (VTBS)",
+    "kml":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/ROUTES/INTROUTES/LEBL-VTBS.kml",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/ROUTES/INTROUTES/IMAGES/LEBL-VTBS.png"
+  }
+]

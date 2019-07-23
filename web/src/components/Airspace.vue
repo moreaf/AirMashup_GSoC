@@ -30,11 +30,10 @@
     margin: 20px;
 }
 </style>
+
+
 <script>
 import axios from 'axios'
-// import image from  '@/assets/AIRPORTS/LEDA.jpg'
-// import image2 from '@/assets/AIRPORTS/LEBL.jpg'
-
 export default {
     data: () => {
         return {
@@ -60,7 +59,7 @@ export default {
     },
     methods: {
         sendKML(id){
-            var myUrl = 'http://localhost:8080/change/' + id
+            var myUrl = 'http://localhost:8080/changeAirports/' + id
             axios({
 
                 method: 'GET',

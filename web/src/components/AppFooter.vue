@@ -23,7 +23,7 @@
             <img src="@/assets/logoAM.png" width = '80%' aspect-ratio=1.7>
           </v-flex>
           <v-flex>
-            <img src="@/assets/lg.png" width = '50%' aspect-ratio=1.7>
+            <img src="@/assets/lg.png" width = '35%' aspect-ratio=1.7>
           </v-flex>
           <v-flex xs3>
             <img src="@/assets/lglab.png" width="90%" >
