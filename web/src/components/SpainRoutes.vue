@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-layout align-center justify-center row wrap>
-      <v-flex xs12 lg6 mb-3>
+      <v-flex xs12 lg7 mb-3>
         <v-expansion-panel popout>
           <v-expansion-panel-content
             v-for="sroute in sroutes"

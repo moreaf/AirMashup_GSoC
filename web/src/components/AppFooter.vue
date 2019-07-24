@@ -4,18 +4,6 @@
     color="white">
     <v-content>
       <v-layout
-        >
-          <!-- <v-flex pa-3>
-            <img src="@/assets/airmashup.png" width = '8%' aspect-ratio=1.7>
-          </v-flex> -->
-      </v-layout>
-      <v-layout
-        >
-          <!-- <v-flex pa-3>
-            <img src="@/assets/lg.png" width = '12%' aspect-ratio=1.7>
-          </v-flex> -->
-      </v-layout> -->
-      <v-layout
         align-center
         justify-space-between
         row>
@@ -37,7 +25,7 @@
           <v-flex xs3>
             <img src="@/assets/gsoc.png" width="85%">
           </v-flex >
-          <v-flex xs3>
+          <v-flex xs3 mr-5>
             <img src="@/assets/lgeu.png" width="80%">
           </v-flex>
       </v-layout>

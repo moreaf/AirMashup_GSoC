@@ -29,21 +29,21 @@ var introutes = JSON.parse(fs.readFileSync('/Users/albert/Desktop/AirMashup_GSoC
 app.get('/changeAirports/:id',function(req,response){
   var form = new FormData();
     form.append('kml', fs.createReadStream(airports[req.params.id].kml))
-    form.submit('http://192.168.86.26:8080/kml/manage/upload')
+    form.submit('http://192.168.86.117:8080/kml/manage/upload')
     response.send("done")
 })
 
 app.get('/changeSRoutes/:id',function(req,response){
   var form = new FormData();
     form.append('kml', fs.createReadStream(sroutes[req.params.id].kml))
-    form.submit('http://192.168.86.26:8080/kml/manage/upload')
+    form.submit('http://192.168.86.117:8080/kml/manage/upload')
     response.send("done")
 })
 
 app.get('/changeIntRoutes/:id',function(req,response){
   var form = new FormData();
     form.append('kml', fs.createReadStream(introutes[req.params.id].kml))
-    form.submit('http://192.168.86.26:8080/kml/manage/upload')
+    form.submit('http://192.168.86.117:8080/kml/manage/upload')
     response.send("done")
 })
 
