@@ -15,9 +15,6 @@
       <router-link to="/airspace">
         <v-btn flat>AIRSPACE</v-btn>
       </router-link>
-      <router-link to="/login">
-        <v-btn flat>DEMO</v-btn>
-      </router-link>
     </div>
       <v-navigation-drawer
         v-model="drawer"

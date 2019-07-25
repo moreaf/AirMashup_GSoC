@@ -1,23 +1,45 @@
 <template>
   <v-container fluid>
   <v-layout align-center justify-center row wrap>
-    <v-flex lg5 v-for="airport in airports">
-       <v-card  v-bind:key="airport.id" class="xxx indigo elevation-20">
+    <v-flex lg5>
+       <v-card class="xxx indigo elevation-20">
           <img
             class="white--text"
             aspect-ratio = 4/3
             width="100%"
-            :src= "airport.img">
+            src= "@/assets/SSAA/OLScover.png">
             <v-container fill-height fluid grid-list-xl>
               <v-layout fill-height>
                 <v-flex align-end flexbox >
-                  <span class="white--text display-1 font-weight-bold justify-center align-center" >{{ airport.name }} </span>
+                  <span class="white--text display-1 font-weight-bold justify-center align-center"> OBJECT LIMITANT SURFACES (OLS) </span>
                 </v-flex>
               </v-layout>
             </v-container>
           <v-card-actions class="align-center justify-space-around">
-            <v-btn class ="elevation-20 mb-3" color="yellow darken-4" @click="sendKML(airport.id)" >LAUNCH OLS</v-btn>
-            <!-- <v-btn flat color="orange">Explore</v-btn> -->
+            <router-link to ="/ols">
+              <v-btn class ="elevation-20 mb-3" color="yellow darken-4">SEE MORE</v-btn>
+            </router-link>
+          </v-card-actions>
+      </v-card>
+    </v-flex>
+    <v-flex lg5>
+       <v-card class="xxx indigo elevation-20">
+          <img
+            class="white--text"
+            aspect-ratio = 4/3
+            width="100%"
+            src= "@/assets/AIS/AIScover.png">
+            <v-container fill-height fluid grid-list-xl>
+              <v-layout fill-height>
+                <v-flex align-end flexbox >
+                  <span class="white--text display-1 font-weight-bold justify-center align-center"> AIS </span>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          <v-card-actions class="align-center justify-space-around">
+            <router-link to ="/ais">
+              <v-btn class ="elevation-20 mb-3" color="yellow darken-4">SEE MORE</v-btn>
+            </router-link>
           </v-card-actions>
       </v-card>
     </v-flex>
@@ -30,49 +52,30 @@
     margin: 20px;
 }
 </style>
-
-
 <script>
 import axios from 'axios'
+
 export default {
     data: () => {
         return {
-        airports :[]
         }
     },
-    mounted(){
-        console.log("ready")
-        var vm = this
-        var myUrl = 'http://localhost:8080/getAirports/'
-        axios({
-
-                method: 'GET',
-                url: myUrl,
-        })
-        .then(function(response){
-                console.log(response.data[0])
-                vm.airports = response.data
-        })
-        //     .catch(function(error){
-        //         console.log(error)
-        //     })
-    },
-    methods: {
-        sendKML(id){
-            var myUrl = 'http://localhost:8080/changeAirports/' + id
-            axios({
-
-                method: 'GET',
-                url: myUrl,
-            })
-            .then(function(response){
-                console.log(response)
-            })
-            .catch(function(error){
-                console.log(error)
-            })
-
-        },
+    // methods: {
+    //     sendKML(id){
+    //         var myUrl = 'http://localhost:8080/change/' + id
+    //         axios({
+    //
+    //             method: 'GET',
+    //             url: myUrl,
+    //         })
+    //         .then(function(response){
+    //             console.log(response)
+    //         })
+    //         .catch(function(error){
+    //             console.log(error)
+    //         })
+    //
+    //     },
     }
-}
+
 </script>

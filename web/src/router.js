@@ -7,6 +7,8 @@ import Airspace from '@/components/Airspace'
 import FlightRoutes from '@/components/FlightRoutes'
 import SpainRoutes from '@/components/SpainRoutes'
 import IntRoutes from '@/components/IntRoutes'
+import OLS from '@/components/OLS'
+import AIS from '@/components/AIS'
 
 Vue.use(Router)
 
@@ -48,6 +50,16 @@ export default new Router({
       path: '/intairroutes',
       name: 'IntRoutes',
       component: IntRoutes
-    }
+    },
+    {
+      path: '/ols',
+      name: 'OLS',
+      component: OLS
+    },
+    {
+      path: '/ais',
+      name: 'AIS',
+      component: AIS
+    },
   ]
 })

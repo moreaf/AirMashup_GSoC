@@ -14,10 +14,12 @@ app.use(function(req, res, next) {
 
 var sendAir = []
 var sendSRoutes = []
+var sendCharts = []
 
 var airports = JSON.parse(fs.readFileSync('/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/ssaa.txt', 'utf8'));
 var sroutes = JSON.parse(fs.readFileSync('/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/ROUTES/sroutes.txt', 'utf8'));
 var introutes = JSON.parse(fs.readFileSync('/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/ROUTES/introutes.txt', 'utf8'));
+var charts = JSON.parse(fs.readFileSync('/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/AIS/charts.txt', 'utf8'));
 
 // var  airports = [
 //             {id:0,name:'LLEIDA-ALGUAIRE AIRPORT', kml: '/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/SSAA/LEBL.kml' , img: '/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/AIRPORTS/LEDA.jpg'},
@@ -43,6 +45,13 @@ app.get('/changeSRoutes/:id',function(req,response){
 app.get('/changeIntRoutes/:id',function(req,response){
   var form = new FormData();
     form.append('kml', fs.createReadStream(introutes[req.params.id].kml))
+    form.submit('http://192.168.86.117:8080/kml/manage/upload')
+    response.send("done")
+})
+
+app.get('/changeCharts/:id',function(req,response){
+  var form = new FormData();
+    form.append('kml', fs.createReadStream(charts[req.params.id].kml))
     form.submit('http://192.168.86.117:8080/kml/manage/upload')
     response.send("done")
 })
@@ -77,6 +86,20 @@ app.get('/getSRoutes',function(req,res){
 
 app.get('/getIntRoutes',function(req,res){
   renderIntRoutes()
+  .then(function(data){
+    res.json(data)
+
+  })
+
+
+
+
+
+
+})
+
+app.get('/getCharts',function(req,res){
+  renderCharts()
   .then(function(data){
     res.json(data)
 
@@ -133,6 +156,22 @@ function renderIntRoutes(){
       sendIntRoutes.push({id: introute.id, name: introute.name,img:base64})
     })
     resolve(sendIntRoutes)
+
+  })
+}
+
+function renderCharts(){
+
+  return new Promise(function(resolve,reject){
+    var sendCharts = []
+    charts.forEach(function(chart){
+      var data = fs.readFileSync(chart.img)
+      var contentType = 'image/png';
+      var base64 = Buffer.from(data).toString('base64');
+      base64='data:image/png;base64,'+base64;
+      sendCharts.push({id: chart.id, name: chart.name,img:base64})
+    })
+    resolve(sendCharts)
 
   })
 }
