@@ -43,7 +43,7 @@ export default {
     mounted(){
         console.log("ready")
         var vm = this
-        var myUrl = 'http://localhost:8080/getCharts/'
+        var myUrl = 'http://10.33.34.119:8080/getCharts/'
         axios({
 
                 method: 'GET',
@@ -59,7 +59,7 @@ export default {
     },
     methods: {
         sendKML(id){
-            var myUrl = 'http://localhost:8080/changeCharts/' + id
+            var myUrl = 'http://10.33.34.119:8080/changeCharts/' + id
             axios({
 
                 method: 'GET',

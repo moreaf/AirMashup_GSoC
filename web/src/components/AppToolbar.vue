@@ -2,18 +2,18 @@
   <v-toolbar color='indigo' dark>
     <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
     <router-link to="/">
-        <v-toolbar-title class="white--text">AirMashup</v-toolbar-title>
+        <v-toolbar-title class="white--text headline">AirMashup</v-toolbar-title>
     </router-link>
     <v-spacer></v-spacer>
     <div class="hidden-sm-and-down">
       <router-link to="/aircrafts">
-       <v-btn flat>REAL-TIME AIRCRAFTS</v-btn>
+       <v-btn flat class='headline'>REAL-TIME AIRCRAFTS</v-btn>
       </router-link>
       <router-link to="/flightroutes">
-        <v-btn flat>FLIGHT ROUTES</v-btn>
+        <v-btn flat class='headline'>FLIGHT ROUTES</v-btn>
       </router-link>
       <router-link to="/airspace">
-        <v-btn flat>AIRSPACE</v-btn>
+        <v-btn flat class='headline'>AIRSPACE</v-btn>
       </router-link>
     </div>
       <v-navigation-drawer

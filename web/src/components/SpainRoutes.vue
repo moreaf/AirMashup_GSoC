@@ -47,7 +47,7 @@ export default {
     mounted(){
         console.log("ready")
         var vm = this
-        var myUrl = 'http://localhost:8080/getSRoutes/'
+        var myUrl = 'http://10.33.34.119:8080/getSRoutes/'
         axios({
 
                 method: 'GET',
@@ -63,7 +63,7 @@ export default {
     },
     methods: {
         sendKML(id){
-            var myUrl = 'http://localhost:8080/changeSRoutes/' + id
+            var myUrl = 'http://10.33.34.119:8080/changeSRoutes/' + id
             axios({
 
                 method: 'GET',
