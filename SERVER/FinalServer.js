@@ -5,6 +5,10 @@ const app = express()
 var axios = require('axios');
 const http = require('http');
 const request = require('request')
+require('dotenv').config()
+
+console.log(process.env.API_IP)
+console.log(process.env.API_PORT)
 
 
 app.use(function(req, res, next) {
@@ -17,24 +21,17 @@ var sendAir = []
 var sendSRoutes = []
 var sendCharts = []
 
-var airports = JSON.parse(fs.readFileSync('/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/ssaa.txt', 'utf8'));
-var sroutes = JSON.parse(fs.readFileSync('/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/ROUTES/sroutes.txt', 'utf8'));
-var introutes = JSON.parse(fs.readFileSync('/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/ROUTES/introutes.txt', 'utf8'));
-var charts = JSON.parse(fs.readFileSync('/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/AIS/charts.txt', 'utf8'));
-
-// var  airports = [
-//             {id:0,name:'LLEIDA-ALGUAIRE AIRPORT', kml: '/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/SSAA/LEBL.kml' , img: '/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/AIRPORTS/LEDA.jpg'},
-//             {id:1, name:'BARCELONA-EL PRAT AIRPORT', kml: '/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/SSAA/LEBL.kml', img: '/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/AIRPORTS/LEBL.jpg' },
-//             {id:2, name:"GIRONA-COSTA BRAVA AIRPORT",kml:"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/SSAA/LEGE.kml",img:"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/AIRPORTS/LEGE.jpg"},
-//             {id:3, name:"SABADELL AIRPORT", kml:"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/SSAA/LELL.kml",img:"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/AIRPORTS/LELL.jpg"}
-// ]
+var airports = JSON.parse(fs.readFileSync(__dirname+'/database/ssaa.txt', 'utf8'));
+var sroutes = JSON.parse(fs.readFileSync(__dirname+'/database/ROUTES/sroutes.txt', 'utf8'));
+var introutes = JSON.parse(fs.readFileSync(__dirname+'/database/ROUTES/introutes.txt', 'utf8'));
+var charts = JSON.parse(fs.readFileSync(__dirname+'/database/AIS/charts.txt', 'utf8'));
 
 app.get('/changeAirports/:id',function(req,response){
   var form = new FormData();
     form.append('kml', fs.createReadStream(airports[req.params.id].kml))
-    form.submit('http://192.168.86.90:8080/kml/manage/upload',function(err,res){
+    form.submit('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/upload',function(err,res){
       console.log(res)
-      request('http://192.168.86.90:8080/kml/manage/initTour/Orbit')
+      request('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/initTour/Orbit')
 
     })
     response.send("done")
@@ -43,21 +40,29 @@ app.get('/changeAirports/:id',function(req,response){
 app.get('/changeSRoutes/:id',function(req,response){
   var form = new FormData();
     form.append('kml', fs.createReadStream(sroutes[req.params.id].kml))
-    form.submit('http://192.168.86.90:8080/kml/manage/upload')
+    form.submit('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/upload')
     response.send("done")
 })
 
 app.get('/changeIntRoutes/:id',function(req,response){
   var form = new FormData();
     form.append('kml', fs.createReadStream(introutes[req.params.id].kml))
-    form.submit('http://192.168.86.90:8080/kml/manage/upload')
+    form.submit('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/upload')
     response.send("done")
 })
 
 app.get('/changeCharts/:id',function(req,response){
   var form = new FormData();
-    form.append('kml', fs.createReadStream(charts[req.params.id].kml))
-    form.submit('http://192.168.86.90:8080/kml/manage/upload')
+    form.append('img', fs.createReadStream(charts[req.params.id].img))
+    form.append('name', charts[req.params.id].name)
+    form.append('id', charts[req.params.id].name)
+    form.append('fCorner', charts[req.params.id].fCorner)
+    form.append('sCorner', charts[req.params.id].sCorner)
+    form.append('tCorner', charts[req.params.id].tCorner)
+    form.append('ftCorner', charts[req.params.id].ftCorner)
+
+
+    form.submit('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/builder/addPhoto')
     response.send("done")
 })
 
@@ -170,11 +175,11 @@ function renderCharts(){
   return new Promise(function(resolve,reject){
     var sendCharts = []
     charts.forEach(function(chart){
-      var data = fs.readFileSync(chart.img)
+      var data = fs.readFileSync(chart.cover)
       var contentType = 'image/png';
       var base64 = Buffer.from(data).toString('base64');
       base64='data:image/png;base64,'+base64;
-      sendCharts.push({id: chart.id, name: chart.name,img:base64})
+      sendCharts.push({id: chart.id, name: chart.name,cover:base64})
     })
     resolve(sendCharts)
 
@@ -188,4 +193,4 @@ app.get('/',function(req,res){
 
 })
 
-app.listen(8080)
+app.listen(process.env.API_PORT)

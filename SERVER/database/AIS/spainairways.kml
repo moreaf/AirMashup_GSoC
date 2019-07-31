@@ -109,7 +109,7 @@
         <name>AIP Spain</name>
         <description>Navigation Chart of Spain</description>
         <Icon>
-          <href>http://localhost:9000/SERVER/database/OTHERS/spainairways.png</href>
+          <href>http://localhost:9000/SERVER/database/AIS/spainairways.png</href>
         </Icon>
         <LatLonBox>
           <north>45.6</north>

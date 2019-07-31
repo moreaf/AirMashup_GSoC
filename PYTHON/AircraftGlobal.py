@@ -40,11 +40,11 @@ def getAircraft():
     # bbox = (min latitude, max latitude, min longitude, max longitude)
     #bbox=(35.920299, 43.891482, -10.284513, 3.824992
 
-    s = api.get_states(bbox=(36.008, 42, -10.284513, 3.824992))
+    s = api.get_states()
     aircrafts = []
     two = time.time()
     totalt= two-one
-    print('api call')
+    print('API call')
     #aircraft = np.empty((numberOfAircrafts))
 
     for state in s.states:
@@ -57,52 +57,6 @@ def getAircraft():
     print('Done API',totalt)
     print("Total number of aircrafts:",len(aircrafts))
     #print('API',aircraft)
-
-
-    time.sleep(1)
-    one = time.time()
-    getPosition1s(aircrafts)
-    update_kml(aircrafts)
-    two = time.time()
-    totalt= two-one
-    print('Done 1s',totalt)
-
-    #print(aircraft[i])
-
-    time.sleep(1)
-
-    one = time.time()
-    getPosition1s(aircrafts)
-    update_kml(aircrafts)
-    two = time.time()
-    totalt= two-one
-    print('Done 2s',totalt)
-
-    #print(aircraft[i])
-
-    time.sleep(1)
-
-    one = time.time()
-    getPosition1s(aircrafts)
-    update_kml(aircrafts)
-    two = time.time()
-    totalt= two-one
-    print('Done 3s',totalt)
-
-    #print(aircraft[i])
-
-    time.sleep(1)
-
-    one = time.time()
-    getPosition1s(aircrafts)
-    update_kml(aircrafts)
-    two = time.time()
-    totalt= two-one
-    print('Done 4s',totalt)
-
-    #time.sleep(1)
-    print('Done lap')
-
 
 def update_kml(aircrafts):
     kml = simplekml.Kml()
@@ -120,5 +74,5 @@ def update_kml(aircrafts):
 s = sched.scheduler(time.time, time.sleep)
 
 while True:
-    s.enter(0, 1, getAircraft)
+    s.enter(4.5, 1, getAircraft)
     s.run()

@@ -43,7 +43,7 @@ export default {
     mounted(){
         console.log("ready")
         var vm = this
-        var myUrl = 'http://10.33.34.119:8080/getIntRoutes/'
+        var myUrl = 'http:/'+ process.env.VUE_APP_SERVER_IP+ ':'+process.env.VUE_APP_SERVER_PORT+'/getIntRoutes/'
         axios({
 
                 method: 'GET',
@@ -59,7 +59,7 @@ export default {
     },
     methods: {
         sendKML(id){
-            var myUrl = 'http://10.33.34.119:8080/changeIntRoutes/' + id
+            var myUrl = 'http:/'+ process.env.VUE_APP_SERVER_IP+ ':'+process.env.VUE_APP_SERVER_PORT+'/changeIntRoutes/' + id
             axios({
 
                 method: 'GET',

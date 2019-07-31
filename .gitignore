@@ -2,3 +2,4 @@ setup.cfg
 __pycache__/
 Eric test/
 gitUpdate.sh
+.env*

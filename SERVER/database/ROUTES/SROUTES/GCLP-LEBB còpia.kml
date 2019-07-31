@@ -19,26 +19,14 @@
           </gx:FlyTo>
           <gx:FlyTo>
             <gx:duration>4.0</gx:duration>
-            <gx:flyToMode>bounce</gx:flyToMode>
-          <LookAt>
-              <altitudeMode>relativeToGround</altitudeMode>
-              <longitude>-15.474222</longitude>
-              <latitude>27.856345</latitude>
-              <range>72880</range>
-              <heading>-2</heading>
-              <tilt>45</tilt>
-            </LookAt>
-          </gx:FlyTo>
-          <gx:FlyTo>
-            <gx:duration>5.0</gx:duration>
             <gx:flyToMode>smooth</gx:flyToMode>
           <LookAt>
               <altitudeMode>relativeToGround</altitudeMode>
               <longitude>-13.643956</longitude>
               <latitude>29.067257</latitude>
-              <range>200000</range>
+              <range>167156</range>
               <heading>-1</heading>
-              <tilt>46</tilt>
+              <tilt>45</tilt>
             </LookAt>
           </gx:FlyTo>
           <gx:FlyTo>
@@ -48,9 +36,9 @@
               <altitudeMode>relativeToGround</altitudeMode>
               <longitude>-9.813182</longitude>
               <latitude>31.455248</latitude>
-              <range>200000</range>
-              <heading>-2</heading>
-              <tilt>30</tilt>
+              <range>168892</range>
+              <heading>-6</heading>
+              <tilt>37</tilt>
             </LookAt>
           </gx:FlyTo>
           <gx:FlyTo>
@@ -94,11 +82,11 @@
             <gx:flyToMode>bounce</gx:flyToMode>
           <LookAt>
               <altitudeMode>relativeToGround</altitudeMode>
-              <longitude>-10.184673</longitude>
-              <latitude>34.815243</latitude>
-              <range>2421983</range>
-              <heading>-4</heading>
-              <tilt>7</tilt>
+              <longitude>-15.474222</longitude>
+              <latitude>27.856345</latitude>
+              <range>72880</range>
+              <heading>-2</heading>
+              <tilt>45</tilt>
             </LookAt>
           </gx:FlyTo>
           </gx:Playlist>
