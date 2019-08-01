@@ -31,7 +31,14 @@ app.get('/changeAirports/:id',function(req,response){
     form.append('kml', fs.createReadStream(airports[req.params.id].kml))
     form.submit('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/upload',function(err,res){
       console.log(res)
-      request('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/initTour/Orbit')
+      function sleep (time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+      }
+      
+      sleep(1000).then(() => {
+        request('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/initTour/Orbit')
+      });
+      
 
     })
     response.send("done")

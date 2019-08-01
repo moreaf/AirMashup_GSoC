@@ -1,5 +1,8 @@
 <template>
   <v-container fluid>
+    <v-layout align-center justify-center row wrap>
+      <h1 style="color:#3F51B5;font-family:roboto;font-size:350%;font-weight:700">AERONAUTICAL INFORMATION SERVICES</h1>
+    </v-layout>
   <v-layout align-center justify-center row wrap>
     <v-flex lg5 v-for="chart in charts">
        <v-card  v-bind:key="chart.id" class="xxx indigo elevation-20">
@@ -63,17 +66,31 @@ export default {
     methods: {
         sendOverlay(id){
             var myUrl = 'http://'+ process.env.VUE_APP_SERVER_IP + ':'+process.env.VUE_APP_SERVER_PORT+'/changeCharts/' + id
+            var APIurl = 'http://'+ process.env.VUE_APP_API_IP + ':'+process.env.VUE_APP_API_PORT+'/kml/manage/clean'
             axios({
 
                 method: 'GET',
-                url: myUrl,
+                url: APIurl,
             })
             .then(function(response){
-                console.log(response)
+              axios({
+
+                  method: 'GET',
+                  url: myUrl,
+                })
+              })
+              .then(function(response){
+                  console.log(response)
+              })
+              .catch(function(error){
+                  console.log(error)
+
             })
             .catch(function(error){
                 console.log(error)
             })
+
+
 
         },
     }

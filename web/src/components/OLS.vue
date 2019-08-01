@@ -1,5 +1,8 @@
 <template>
   <v-container fluid>
+    <v-layout align-center justify-center row wrap>
+      <h1 style="color:#3F51B5;font-family:roboto;font-size:350%;font-weight:700">OBJECT LIMITANT SURFACES</h1>
+    </v-layout>
   <v-layout align-center justify-center row wrap>
     <v-flex lg5 v-for="airport in airports">
        <v-card  v-bind:key="airport.id" class="xxx indigo elevation-20">
@@ -43,7 +46,7 @@ export default {
     mounted(){
         console.log("ready")
         var vm = this
-        var myUrl = 'http://localhost:8080/getAirports/'
+        var myUrl = 'http://'+ process.env.VUE_APP_SERVER_IP+ ':'+process.env.VUE_APP_SERVER_PORT+'/getAirports/'
         axios({
 
                 method: 'GET',
@@ -59,7 +62,7 @@ export default {
     },
     methods: {
         sendKML(id){
-            var myUrl = 'http://localhost:8080/changeAirports/' + id
+            var myUrl = 'http://'+ process.env.VUE_APP_SERVER_IP+ ':'+process.env.VUE_APP_SERVER_PORT+'/changeAirports/' + id
             axios({
 
                 method: 'GET',

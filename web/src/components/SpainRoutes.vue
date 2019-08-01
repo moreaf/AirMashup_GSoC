@@ -1,6 +1,9 @@
 <template>
   <v-container fluid>
     <v-layout align-center justify-center row wrap>
+      <h1 style="color:#3F51B5;font-family:roboto;font-size:350%;font-weight:700">SPAIN FLIGHT ROUTES</h1>
+    </v-layout>
+    <v-layout align-center justify-center row wrap>
       <v-flex xs12 lg7 mb-3>
         <v-expansion-panel popout>
           <v-expansion-panel-content
@@ -47,7 +50,8 @@ export default {
     mounted(){
         console.log("ready")
         var vm = this
-        var myUrl = 'http:/'+ process.env.VUE_APP_SERVER_IP+ ':'+process.env.VUE_APP_SERVER_PORT+'/getSRoutes/'
+        var myUrl = 'http://'+ process.env.VUE_APP_SERVER_IP+ ':'+process.env.VUE_APP_SERVER_PORT+'/getSRoutes/'
+      
         axios({
 
                 method: 'GET',
@@ -63,7 +67,7 @@ export default {
     },
     methods: {
         sendKML(id){
-            var myUrl = 'http:/'+ process.env.VUE_APP_SERVER_IP+ ':'+process.env.VUE_APP_SERVER_PORT+'/changeSRoutes/' + id
+            var myUrl = 'http://'+ process.env.VUE_APP_SERVER_IP+ ':'+process.env.VUE_APP_SERVER_PORT+'/changeSRoutes/' + id
             axios({
 
                 method: 'GET',
