@@ -6,10 +6,14 @@ var axios = require('axios');
 const http = require('http');
 const request = require('request')
 require('dotenv').config()
+console.log(' ---- API ----')
+console.log("IP",process.env.API_IP)
+console.log("PORT",process.env.API_PORT)
+console.log(' ---- server ----')
+console.log("IP",process.env.VUE_APP_SERVER_IP)
+console.log("PORT",process.env.VUE_APP_SERVER_PORT)
 
-console.log(process.env.API_IP)
-console.log(process.env.API_PORT)
-
+app.use('/',express.static('./dist'))
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -34,11 +38,11 @@ app.get('/changeAirports/:id',function(req,response){
       function sleep (time) {
         return new Promise((resolve) => setTimeout(resolve, time));
       }
-      
-      sleep(1000).then(() => {
+
+      sleep(600).then(() => {
         request('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/initTour/Orbit')
       });
-      
+
 
     })
     response.send("done")
@@ -47,14 +51,36 @@ app.get('/changeAirports/:id',function(req,response){
 app.get('/changeSRoutes/:id',function(req,response){
   var form = new FormData();
     form.append('kml', fs.createReadStream(sroutes[req.params.id].kml))
-    form.submit('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/upload')
+    form.submit('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/upload',function(err,res){
+      console.log(res)
+      function sleep (time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+      }
+
+      sleep(600).then(() => {
+        request('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/initTour/FollowPath')
+      });
+
+
+    })
     response.send("done")
 })
 
 app.get('/changeIntRoutes/:id',function(req,response){
   var form = new FormData();
     form.append('kml', fs.createReadStream(introutes[req.params.id].kml))
-    form.submit('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/upload')
+    form.submit('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/upload',function(err,res){
+      console.log(res)
+      function sleep (time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+      }
+
+      sleep(600).then(() => {
+        request('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/initTour/FollowPath')
+      });
+
+
+    })
     response.send("done")
 })
 

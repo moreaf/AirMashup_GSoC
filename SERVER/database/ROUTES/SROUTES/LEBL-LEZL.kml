@@ -1,6 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2">
+<kml xmlns="http://www.opengis.net/kml/2.2"
+  xmlns:gx="http://www.google.com/kml/ext/2.2">
   <Document>
+    <gx:Tour>
+        <name>FollowPath</name>
+        <gx:Playlist>
+          <gx:FlyTo>
+            <gx:duration>4.0</gx:duration>
+            <gx:flyToMode>bounce</gx:flyToMode>
+            <LookAt>
+                <altitudeMode>relativeToGround</altitudeMode>
+                <longitude>-2.660667</longitude>
+                <latitude>39.681166</latitude>
+                <range>322945</range>
+                <heading>-3</heading>
+                <tilt>60</tilt>
+              </LookAt>
+          </gx:FlyTo>
+          <gx:FlyTo>
+            <gx:duration>6.0</gx:duration>
+            <gx:flyToMode>bounce</gx:flyToMode>
+            <LookAt>
+                <altitudeMode>relativeToGround</altitudeMode>
+                <longitude>2.07830</longitude>
+                <latitude>41.296900</latitude>
+                <range>15693</range>
+                <heading>17</heading>
+                <tilt>22</tilt>
+              </LookAt>
+          </gx:FlyTo>
+          <gx:FlyTo>
+            <gx:duration>20.0</gx:duration>
+            <gx:flyToMode>smooth</gx:flyToMode>
+            <LookAt>
+                <altitudeMode>relativeToGround</altitudeMode>
+                <longitude>-2.092800</longitude>
+                <latitude>38.521100</latitude>
+                <range>200985</range>
+                <heading>12</heading>
+                <tilt>60</tilt>
+              </LookAt>
+          </gx:FlyTo>
+          <gx:FlyTo>
+            <gx:duration>4.0</gx:duration>
+            <gx:flyToMode>smooth</gx:flyToMode>
+            <LookAt>
+                <altitudeMode>relativeToGround</altitudeMode>
+                <longitude>-3.625000</longitude>
+                <latitude>38.152500</latitude>
+                <range>180000</range>
+                <heading>13</heading>
+                <tilt>55</tilt>
+              </LookAt>
+              </gx:FlyTo>
+          <gx:FlyTo>
+            <gx:duration>5.0</gx:duration>
+            <gx:flyToMode>smooth</gx:flyToMode>
+            <LookAt>
+                <altitudeMode>relativeToGround</altitudeMode>
+                <longitude>-5.898900</longitude>
+                <latitude>37.418100</latitude>
+                <range>15000</range>
+                <heading>19</heading>
+                <tilt>22</tilt>
+              </LookAt>
+          </gx:FlyTo>
+            <gx:Wait>
+              <gx:duration>3.0</gx:duration>
+            </gx:Wait>
+            <gx:FlyTo>
+              <gx:duration>4.0</gx:duration>
+              <gx:flyToMode>bounce</gx:flyToMode>
+              <LookAt>
+                  <altitudeMode>relativeToGround</altitudeMode>
+                  <longitude>-2.660667</longitude>
+                  <latitude>39.681166</latitude>
+                  <range>322945</range>
+                  <heading>-3</heading>
+                  <tilt>60</tilt>
+                </LookAt>
+            </gx:FlyTo>
+         </gx:Playlist>
+        </gx:Tour>
+    <Folder>
     <name>LEBL to LEZL</name>
     <description>BARCELONA/EL PRAT to SEVILLA</description>
     <Style id="redPoly">
@@ -33,5 +115,6 @@
 </coordinates>
       </LineString>
     </Placemark>
+   </Folder>
   </Document>
 </kml>

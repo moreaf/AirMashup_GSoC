@@ -3,7 +3,7 @@
   xmlns:gx="http://www.google.com/kml/ext/2.2">
   <Document>
     <gx:Tour>
-        <name>Follow Path</name>
+        <name>FollowPath</name>
         <gx:Playlist>
           <gx:FlyTo>
             <gx:duration>4.0</gx:duration>
@@ -12,7 +12,7 @@
               <altitudeMode>relativeToGround</altitudeMode>
               <longitude>-10.184673</longitude>
               <latitude>34.815243</latitude>
-              <range>2421983</range>
+              <range>1500000</range>
               <heading>-4</heading>
               <tilt>7</tilt>
             </LookAt>
@@ -90,20 +90,19 @@
             </LookAt>
           </gx:FlyTo>
           <gx:FlyTo>
-            <gx:duration>4.0</gx:duration>
+            <gx:duration>6.0</gx:duration>
             <gx:flyToMode>bounce</gx:flyToMode>
           <LookAt>
               <altitudeMode>relativeToGround</altitudeMode>
               <longitude>-10.184673</longitude>
               <latitude>34.815243</latitude>
-              <range>2421983</range>
+              <range>1500000</range>
               <heading>-4</heading>
               <tilt>7</tilt>
             </LookAt>
           </gx:FlyTo>
           </gx:Playlist>
       </gx:Tour>
-
     <Folder>
     <name>GCLP to LEBB</name>
     <description>GRAN CANARIA to BILBAO</description>
