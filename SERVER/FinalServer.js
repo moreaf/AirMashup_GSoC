@@ -5,7 +5,9 @@ const app = express()
 var axios = require('axios');
 const http = require('http');
 const request = require('request')
+const execFile = require('child_process').execFile;
 require('dotenv').config()
+
 console.log(' ---- API ----')
 console.log("IP",process.env.API_IP)
 console.log("PORT",process.env.API_PORT)
@@ -13,7 +15,7 @@ console.log(' ---- server ----')
 console.log("IP",process.env.VUE_APP_SERVER_IP)
 console.log("PORT",process.env.VUE_APP_SERVER_PORT)
 
-app.use('/',express.static('./dist'))
+//app.use('/',express.static('./dist'))
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -97,6 +99,28 @@ app.get('/changeCharts/:id',function(req,response){
 
     form.submit('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/builder/addPhoto')
     response.send("done")
+})
+
+app.get('/sendAircraftSpain',function(req,response){
+  const child = execFile('python3', ['./python/test.py'])
+
+    response.send("done")
+})
+
+
+app.get('/stop',function(req,response){
+  const child = execFile('pkill', ['Python'], (error, stdout, stderr) => {
+    if (error) {
+        console.error('stderr', stderr);
+        throw error;
+    }
+    console.log('stdout', stdout);
+  })
+  axios.get('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/clean')
+    .catch(function(err){
+      console.log(err)
+    })
+  response.send('killed')
 })
 
 app.get('/getAirports',function(req,res){

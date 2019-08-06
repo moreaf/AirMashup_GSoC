@@ -1,10 +1,10 @@
 import sched, time
 import simplekml
 from opensky_api import *
-from functionLibrary import *
 from threading import Thread
 from datetime import datetime
 import time
+import math
 
 class Aircraft():
     def __init__(self, callsign,lat,lon,alt,hdg,hvel,vvel):
@@ -41,11 +41,9 @@ def getAircraft():
     #bbox=(35.920299, 43.891482, -10.284513, 3.824992
 
     s = api.get_states(bbox=(36.008, 42, -10.284513, 3.824992))
-    print(s)
     aircrafts = []
     two = time.time()
     totalt= two-one
-    print('api call')
     #aircraft = np.empty((numberOfAircrafts))
 
     for state in s.states:
@@ -55,7 +53,7 @@ def getAircraft():
     #aircraft = ['test',41.4669,-4.9866,12176.76,131.81,235.36,-3.25] #TESTING AIRCRAFT
     update_kml(aircrafts)
     totalt= two-one
-    print('Done API',totalt)
+    print('Done API 0s',totalt)
     print("Total number of aircrafts:",len(aircrafts))
     #print('API',aircraft)
 
@@ -101,8 +99,8 @@ def getAircraft():
     totalt= two-one
     print('Done 4s',totalt)
 
-    #time.sleep(1)
-    print('Done lap')
+    time.sleep(0.6)
+
 
 
 def update_kml(aircrafts):
@@ -111,11 +109,30 @@ def update_kml(aircrafts):
         pnt = kml.newpoint()
         pnt.name = aircraft.callsign
         #pnt.description = "Time corresponding to 12:00 noon, Eastern Standard Time: {0}".format(time)
-        pnt.coords = [(aircraft.lat, aircraft.lon, aircraft.alt)]
+        pnt.coords = [(aircraft.lon, aircraft.lat, aircraft.alt)]
         pnt.altitudemode = simplekml.AltitudeMode.relativetoground
         pnt.style.iconstyle.scale = 1
         pnt.style.iconstyle.heading = aircraft.hdg
-        pnt.style.iconstyle.icon.href = 'http://192.168.86.35:9000//images/planeicon.png'
+        pnt.style.iconstyle.icon.href = 'http://192.168.86.90:8080/images/planeicon.png'
     kml.save("testkml.kml")
+    time.sleep(0.5)
+    send_kml("/Users/albert/Desktop/AirMashup_GSoC/SERVER/testkml.kml")
 
+
+def send_kml(kml_file):
+    url = 'http://192.168.86.90:8080/kml/manage/upload'
+    file_name = kml_file.split('/')[-1]
+    multipart_form_data = {
+        'kml': (file_name, open(kml_file, 'r')),
+    }
+    response = requests.post(url, files=multipart_form_data)
+    print("> Answer received by LiquidGalaxy [%s]. "% response.status_code)
+
+print('fins aquí arriba')
 s = sched.scheduler(time.time, time.sleep)
+
+while True:
+    s.enter(0, 1, getAircraft)
+    s.run()
+
+print('fins aquí no')

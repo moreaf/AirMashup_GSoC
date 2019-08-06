@@ -1,10 +1,10 @@
 import sched, time
 import simplekml
 from opensky_api import *
-from functionLibrary import *
 from threading import Thread
 from datetime import datetime
 import time
+import math
 
 class Aircraft():
     def __init__(self, callsign,lat,lon,alt,hdg,hvel,vvel):
