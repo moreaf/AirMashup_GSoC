@@ -5,17 +5,23 @@ const app = express()
 var axios = require('axios');
 const http = require('http');
 const request = require('request')
-const execFile = require('child_process').execFile;
+const exec = require('child_process').exec;
 require('dotenv').config()
 
 
-const child = execFile('python3', ['./python/test.py'], (error, stdout, stderr) => {
+var minlat = 36
+var maxlat = 44
+var minlon = -9
+var maxlon = 3
+
+const child = exec(`python3 test.py ${minlat} ${maxlat} ${minlon} ${maxlon}`, (error, stdout, stderr) => {
     if (error) {
         console.error('stderr', stderr);
         throw error;
     }
     console.log('stdout', stdout);
   });
-  var form = new FormData();
-    form.append('kml', fs.createReadStream('/Users/albert/Desktop/AirMashup_GSoC/SERVER/testkml.kml'))
-    form.submit('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/upload')
+
+
+  //   const child = execFile('python3', [command])
+  // response.send({message:"done", command: command})

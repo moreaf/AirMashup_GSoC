@@ -5,7 +5,10 @@ const app = express()
 var axios = require('axios');
 const http = require('http');
 const request = require('request')
-const execFile = require('child_process').execFile;
+const exec = require('child_process').exec;
+const execFile = require('child_process').execFile
+const formparser = require('express-formidable');
+app.use(formparser())
 require('dotenv').config()
 
 console.log(' ---- API ----')
@@ -101,21 +104,28 @@ app.get('/changeCharts/:id',function(req,response){
     response.send("done")
 })
 
-app.get('/sendAircraftSpain',function(req,response){
-  const child = execFile('python3', ['./python/test.py'])
-
+app.get('/sendAircraftSpain/',function(req,response){
+  var minlat = 36
+  var maxlat = 44
+  var minlon = -9
+  var maxlon = 3
+  const child = exec(`python3 test.py ${minlat} ${maxlat} ${minlon} ${maxlon}`);
+  response.send({message:"done"})
     response.send("done")
+})
+
+app.post('/sendAircraft',function(req,response){
+  var minlat = req.fields.minlat || 36
+  var maxlat = req.fields.maxlat || 44
+  var minlon = req.fields.minlon || -9
+  var maxlon = req.fields.maxlon || 3
+  const child = exec(`python3 test.py ${minlat} ${maxlat} ${minlon} ${maxlon}`);
+  response.send({message:"done"})
 })
 
 
 app.get('/stop',function(req,response){
-  const child = execFile('pkill', ['Python'], (error, stdout, stderr) => {
-    if (error) {
-        console.error('stderr', stderr);
-        throw error;
-    }
-    console.log('stdout', stdout);
-  })
+  const child = execFile('pkill', ['Python'])
   axios.get('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/clean')
     .catch(function(err){
       console.log(err)

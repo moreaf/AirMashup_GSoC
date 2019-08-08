@@ -9,6 +9,7 @@ import SpainRoutes from '@/components/SpainRoutes'
 import IntRoutes from '@/components/IntRoutes'
 import OLS from '@/components/OLS'
 import AIS from '@/components/AIS'
+import Dashboard from '@/components/Dashboard'
 
 Vue.use(Router)
 
@@ -61,5 +62,10 @@ export default new Router({
       name: 'AIS',
       component: AIS
     },
+    {
+      path: '/dash',
+      name: 'Dashboard',
+      component: Dashboard
+    }
   ]
 })
