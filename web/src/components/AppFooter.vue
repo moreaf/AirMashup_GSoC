@@ -34,15 +34,6 @@
         row
         wrap
       >
-        <!-- <v-btn
-          v-for="link in links"
-          :key="link"
-          color="white"
-          flat
-          round
-        >
-          {{ link }}
-        </v-btn> -->
         <v-flex
           primary
           py-3
@@ -61,12 +52,23 @@
 <script>
   export default {
     data: () => ({
-      // links: [
-      //   'Home',
-      //   'About AirMashup',
-      //   'About Liquid Galaxy Lab',
-      //   'Contact Us'
-      // ]
-    })
+    }),
+    methods:{
+      stop(){
+          var myUrl = 'http://'+ process.env.VUE_APP_SERVER_IP+ ':'+process.env.VUE_APP_SERVER_PORT+'/kml/manage/clean'
+          axios({
+
+              method: 'GET',
+              url: myUrl,
+          })
+          .then(function(response){
+              console.log(response)
+              console.log('request done')
+          })
+          .catch(function(error){
+              console.log(error)
+          })
+      }
+    }
   }
 </script>

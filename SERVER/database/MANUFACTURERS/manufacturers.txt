@@ -1,0 +1,26 @@
+[
+  {
+    "id":0,
+    "name":"AIRBUS",
+    "kml":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/KML/AIRBUS.kml",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/IMAGES/AIRBUS.png"
+  },
+  {
+    "id":1,
+    "name":"BOEING",
+    "kml":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/KML/BOEING.kml",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/IMAGES/BOEING.png"
+  },
+  {
+    "id":2,
+    "name":"BOMBARDIER",
+    "kml":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/KML/BOMBARDIER.kml",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/IMAGES/BOMBARDIER.png"
+  },
+  {
+    "id":3,
+    "name":"EMBRAER",
+    "kml":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/KML/EMBRAER.kml",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/IMAGES/EMBRAER.png"
+  }
+]

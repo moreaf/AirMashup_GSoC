@@ -1,16 +1,18 @@
 <template>
   <v-container >
+    <v-layout mb-3 align-center justify-center row wrap>
+    <h1 style="color:#3F51B5;font-family:roboto;font-size:350%;font-weight:700">LIVE AIR TRAFFIC</h1>
+  </v-layout>
     <v-layout row wrap align-center>
       <v-flex xs12>
         <div class="text-xs-center">
-          <!-- <div>
-            <v-btn small color="indigo" dark large @click="sendKML()">LAUNCH GLOBAL VIEW</v-btn>
-          </div> -->
           <div>
             <v-btn color="indigo" dark large @click="sendKMLSpain()">LAUNCH SPAIN DEMO</v-btn>
-            <!-- <v-btn color="red" dark large @click="stop()">STOP</v-btn> -->
           </div>
         </div>
+        <v-layout mt-3 align-center justify-center row wrap>
+          <h1 style="color:#3F51B5;font-family:roboto;font-size:250%;font-weight:400">SEARCH BY ZONE</h1>
+        </v-layout>
       </v-flex>
     </v-layout>
     <v-form id="nativeForm" v-model="valid">
@@ -74,7 +76,7 @@
               <v-btn small color="indigo" dark large @click="sendKML()">LAUNCH GLOBAL VIEW</v-btn>
             </div> -->
             <div>
-              <v-btn color="indigo" dark large @click="submit()">LAUNCH</v-btn>
+              <v-btn color="indigo" dark large @click="submitZone()">LAUNCH</v-btn>
               <v-btn color="red" dark large @click="stop()">STOP</v-btn>
             </div>
           </div>
@@ -82,6 +84,37 @@
       </v-layout>
     </v-container>
   </v-form>
+  <v-form id="nativeForm2" v-model="valid">
+  <v-container grid-list-xl>
+    <v-layout mt-3 align-center justify-center row wrap>
+      <h1 style="color:#3F51B5;font-family:roboto;font-size:250%;font-weight:400">SEARCH BY ICAO24 ID</h1>
+    </v-layout>
+    <v-layout align-center justify-center row wrap>
+      <v-flex
+        xs12
+        md3
+      >
+        <v-text-field
+          v-model="icao24"
+          :rules="nameRules"
+          :counter="6"
+          label="Icao24 ID"
+          required
+        ></v-text-field>
+      </v-flex>
+    </v-layout>
+    <v-layout row wrap align-center>
+      <v-flex xs12>
+        <div class="text-xs-center">
+          <div>
+            <v-btn color="indigo" dark large @click="submitIcao()">LAUNCH</v-btn>
+            <v-btn color="red" dark large @click="stop()">STOP</v-btn>
+          </div>
+        </div>
+      </v-flex>
+    </v-layout>
+  </v-container>
+</v-form>
   </v-container>
 </template>
 
@@ -95,6 +128,7 @@ export default {
     maxlat: '',
     minlon: '',
     maxlon: '',
+    icao24: '',
     nameRules: [
       v => !!v || 'Coordinate is required',
       v => v.length <= 6 || 'Coordinate must be less than 5 characters',
@@ -153,14 +187,26 @@ export default {
             })
 
         },
-        submit(){
-          var urlFormPost = "http://"+process.env.VUE_APP_SERVER_IP+":"+process.env.VUE_APP_SERVER_PORT+"/sendAircraft"
+        submitZone(){
+          var urlFormPost = "http://"+process.env.VUE_APP_SERVER_IP+":"+process.env.VUE_APP_SERVER_PORT+"/sendAircraftZone"
           var form = new FormData()
           form.append('minlat',this.minlat)
           form.append('maxlat',this.maxlat)
           form.append('minlon',this.minlon)
           form.append('maxlon',this.maxlon)
 
+          axios({
+            method: 'POST',
+            url: urlFormPost,
+            data: form
+          }).then(function(response){
+            console.log(response.data)
+          })
+        },
+        submitIcao(){
+          var urlFormPost = "http://"+process.env.VUE_APP_SERVER_IP+":"+process.env.VUE_APP_SERVER_PORT+"/sendAircraftIcao"
+          var form = new FormData()
+          form.append('icao24',this.icao24)
           axios({
             method: 'POST',
             url: urlFormPost,

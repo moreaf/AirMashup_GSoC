@@ -34,6 +34,7 @@ var airports = JSON.parse(fs.readFileSync(__dirname+'/database/ssaa.txt', 'utf8'
 var sroutes = JSON.parse(fs.readFileSync(__dirname+'/database/ROUTES/sroutes.txt', 'utf8'));
 var introutes = JSON.parse(fs.readFileSync(__dirname+'/database/ROUTES/introutes.txt', 'utf8'));
 var charts = JSON.parse(fs.readFileSync(__dirname+'/database/AIS/charts.txt', 'utf8'));
+var manufacturers = JSON.parse(fs.readFileSync(__dirname+'/database/MANUFACTURERS/manufacturers.txt', 'utf8'));
 
 app.get('/changeAirports/:id',function(req,response){
   var form = new FormData();
@@ -106,20 +107,27 @@ app.get('/changeCharts/:id',function(req,response){
 
 app.get('/sendAircraftSpain/',function(req,response){
   var minlat = 36
-  var maxlat = 44
+  var maxlat = 43.6
   var minlon = -9
-  var maxlon = 3
-  const child = exec(`python3 test.py ${minlat} ${maxlat} ${minlon} ${maxlon}`);
+  var maxlon = 2.8
+  const child = exec(`python3 AircraftZone.py ${minlat} ${maxlat} ${minlon} ${maxlon}`);
   response.send({message:"done"})
     response.send("done")
 })
 
-app.post('/sendAircraft',function(req,response){
+app.post('/sendAircraftZone',function(req,response){
   var minlat = req.fields.minlat || 36
   var maxlat = req.fields.maxlat || 44
   var minlon = req.fields.minlon || -9
   var maxlon = req.fields.maxlon || 3
-  const child = exec(`python3 test.py ${minlat} ${maxlat} ${minlon} ${maxlon}`);
+  const child = exec(`python3 AircraftZone.py ${minlat} ${maxlat} ${minlon} ${maxlon}`);
+  response.send({message:"done"})
+})
+
+app.post('/sendAircraftIcao',function(req,response){
+  var icao24 = req.fields.icao24 || "EMPTY"
+
+  const child = exec(`python3 AircraftIcao24.py ${icao24}`);
   response.send({message:"done"})
 })
 
@@ -132,6 +140,12 @@ app.get('/stop',function(req,response){
     })
   response.send('killed')
 })
+
+app.get('/orbit',function(req,response){
+      request('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/initTour/Orbit')
+      response.send('done')
+    })
+
 
 app.get('/getAirports',function(req,res){
   renderPlanes()
@@ -188,6 +202,21 @@ app.get('/getCharts',function(req,res){
 
 
 })
+
+app.get('/getManufacturers',function(req,res){
+  renderManufacturers()
+  .then(function(data){
+    res.json(data)
+
+  })
+
+
+
+
+
+
+})
+
 
 function renderPlanes(){
 
@@ -253,11 +282,20 @@ function renderCharts(){
   })
 }
 
-app.get('/',function(req,res){
+function renderManufacturers(){
 
+  return new Promise(function(resolve,reject){
+    var sendManufacturers = []
+    manufacturers.forEach(function(manufacturer){
+      var data = fs.readFileSync(manufacturer.img)
+      var contentType = 'image/png';
+      var base64 = Buffer.from(data).toString('base64');
+      base64='data:image/png;base64,'+base64;
+      sendManufacturers.push({id: manufacturer.id, name: manufacturer.name,img:base64})
+    })
+    resolve(sendManufacturers)
 
-
-
-})
+  })
+}
 
 app.listen(process.env.API_PORT)

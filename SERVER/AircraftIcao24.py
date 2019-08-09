@@ -35,13 +35,13 @@ def getPosition1s(aircrafts):
 
     return aircrafts
 
-def getAircraft(minlat,maxlat,minlon,maxlon):
+def getAircraft(icao24id):
     one = time.time()
     api = OpenSkyApi('moreaf','Morea1234')
     # bbox = (min latitude, max latitude, min longitude, max longitude)
     #bbox=(35.920299, 43.891482, -10.284513, 3.824992
 
-    s = api.get_states(bbox=(minlat,maxlat,minlon,maxlon))
+    s = api.get_states(icao24=icao24id)
     #s = api.get_states(bbox=(35.920299, 43.891482, -10.284513, 3.824992))
     aircrafts = []
     two = time.time()
@@ -106,9 +106,9 @@ def update_kml(aircrafts):
         pnt.style.iconstyle.scale = 1
         pnt.style.iconstyle.heading = aircraft.hdg
         pnt.style.iconstyle.icon.href = 'http://192.168.86.90:8080/images/planeicon.png'
-    kml.save("testkml.kml")
+    kml.save("Aircrafts24.kml")
     time.sleep(0.5)
-    send_kml("/Users/albert/Desktop/AirMashup_GSoC/SERVER/testkml.kml")
+    send_kml("/Users/albert/Desktop/AirMashup_GSoC/SERVER/Aircrafts24.kml")
 
 
 def send_kml(kml_file):
@@ -121,12 +121,8 @@ def send_kml(kml_file):
     print("> Answer received by LiquidGalaxy [%s]. "% response.status_code)
 
 
-s = sched.scheduler(time.time, time.sleep)
-print('Min lat:',sys.argv[1],'///// Max lat:',sys.argv[2],'///// Min lon:',sys.argv[3],'///// Max lon:',sys.argv[4])
 
-# while True:
-#     s.enter(0, 1, getAircraft(float(sys.argv[1]),float(sys.argv[2]),float(sys.argv[3]),float(sys.argv[4])))
-#     s.run()
+print('Aircraft Icao 24 id:',sys.argv[1])
 
 while True:
-    getAircraft(float(sys.argv[1]),float(sys.argv[2]),float(sys.argv[3]),float(sys.argv[4]))
+    getAircraft(sys.argv[1])

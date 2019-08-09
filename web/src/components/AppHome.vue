@@ -1,6 +1,15 @@
 <template>
   <div>
     <v-content>
+      <v-layout ma-5 row wrap align-center justify-center>
+        <v-flex xs12>
+          <div class="text-xs-center">
+            <div>
+              <v-btn color="indigo" dark large @click="stop()">LAUNCH DEMO</v-btn>
+            </div>
+          </div>
+        </v-flex>
+      </v-layout>
       <v-layout
         align-center
         justify-space-between

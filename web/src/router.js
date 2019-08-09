@@ -9,7 +9,12 @@ import SpainRoutes from '@/components/SpainRoutes'
 import IntRoutes from '@/components/IntRoutes'
 import OLS from '@/components/OLS'
 import AIS from '@/components/AIS'
-import Dashboard from '@/components/Dashboard'
+import Manufacturers from '@/components/Manufacturers'
+import Airbus from '@/components/Airbus'
+import Boeing from '@/components/Boeing'
+import Bombardier from '@/components/Bombardier'
+import Embraer from '@/components/Embraer'
+
 
 Vue.use(Router)
 
@@ -63,9 +68,29 @@ export default new Router({
       component: AIS
     },
     {
-      path: '/dash',
-      name: 'Dashboard',
-      component: Dashboard
+      path: '/manufacturers',
+      name: 'Manufacturers',
+      component: Manufacturers
+    },
+    {
+      path: '/airbus',
+      name: 'Airbus',
+      component: Airbus
+    },
+    {
+      path: '/boeing',
+      name: 'Boeing',
+      component: Boeing
+    },
+    {
+      path: '/bombardier',
+      name: 'Bombardier',
+      component: Bombardier
+    },
+    {
+      path: '/embraer',
+      name: 'Embraer',
+      component: Embraer
     }
   ]
 })
