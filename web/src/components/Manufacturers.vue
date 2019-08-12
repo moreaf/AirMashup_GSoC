@@ -19,7 +19,9 @@
               </v-layout>
             </v-container>
           <v-card-actions class="align-center justify-space-around">
-            <v-btn class ="elevation-20 mb-3" color="yellow darken-4" dark @click="sendPath(manufacturer.id)" >CHECK MODELS</v-btn>
+            <router-link :to="manufacturer.path">
+            <v-btn class ="elevation-20 mb-3" color="yellow darken-4" dark>CHECK MODELS</v-btn>
+            </router-link>
           </v-card-actions>
       </v-card>
     </v-flex>

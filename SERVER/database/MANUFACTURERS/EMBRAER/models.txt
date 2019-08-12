@@ -1,0 +1,20 @@
+[
+  {
+    "id":0,
+    "name":"ERJ SERIES ",
+    "kml":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/KML/EMBRAER.kml",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/EMBRAER/IMAGES/ERJ.png"
+  },
+  {
+    "id":1,
+    "name":"E-JETS SERIES",
+    "kml":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/KML/EMBRAER.kml",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/EMBRAER/IMAGES/E-JETS.png"
+  },
+  {
+    "id":2,
+    "name":"E-JETS E2 SERIES",
+    "kml":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/KML/EMBRAER.kml",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/EMBRAER/IMAGES/E-JETS-E2.png"
+  }
+]

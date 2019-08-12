@@ -1,0 +1,32 @@
+[
+  {
+    "id":0,
+    "name":"B737 FAMILY",
+    "kml":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/KML/BOEING.kml",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/BOEING/IMAGES/B737.png"
+  },
+  {
+    "id":1,
+    "name":"B747 FAMILY",
+    "kml":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/KML/BOEING.kml",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/BOEING/IMAGES/B747.png"
+  },
+  {
+    "id":2,
+    "name":"B767 FAMILY",
+    "kml":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/KML/BOMBARDIER.kml",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/BOEING/IMAGES/B767.png"
+  },
+  {
+    "id":3,
+    "name":"B777 FAMILY",
+    "kml":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/KML/EMBRAER.kml",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/BOEING/IMAGES/B777.png"
+  },
+  {
+    "id":4,
+    "name":"B787 FAMILY",
+    "kml":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/KML/BOEING.kml",
+    "img":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/BOEING/IMAGES/B787.png"
+  }
+]

@@ -4,12 +4,8 @@
     <v-layout ma-3 row align-center>
       <v-flex xs12>
         <div class="text-xs-center">
-          <!-- <div>
-            <v-btn small color="indigo" dark large @click="sendKML()">LAUNCH GLOBAL VIEW</v-btn>
-          </div> -->
           <div>
-            <v-btn color="red" dark large @click="stop()">CLEAN KML</v-btn>
-            <!-- <v-btn color="red" dark large @click="stop()">STOP</v-btn> -->
+            <v-btn color="red" dark large @click="stop()">CLEAN CURRENT VISUALIZATION</v-btn>
           </div>
         </div>
       </v-flex>

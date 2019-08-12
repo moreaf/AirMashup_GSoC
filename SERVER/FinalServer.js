@@ -35,6 +35,10 @@ var sroutes = JSON.parse(fs.readFileSync(__dirname+'/database/ROUTES/sroutes.txt
 var introutes = JSON.parse(fs.readFileSync(__dirname+'/database/ROUTES/introutes.txt', 'utf8'));
 var charts = JSON.parse(fs.readFileSync(__dirname+'/database/AIS/charts.txt', 'utf8'));
 var manufacturers = JSON.parse(fs.readFileSync(__dirname+'/database/MANUFACTURERS/manufacturers.txt', 'utf8'));
+var airbusModels = JSON.parse(fs.readFileSync(__dirname+'/database/MANUFACTURERS/AIRBUS/models.txt', 'utf8'));
+var boeingModels = JSON.parse(fs.readFileSync(__dirname+'/database/MANUFACTURERS/BOEING/models.txt', 'utf8'));
+var bombardierModels = JSON.parse(fs.readFileSync(__dirname+'/database/MANUFACTURERS/BOMBARDIER/models.txt', 'utf8'));
+var embraerModels = JSON.parse(fs.readFileSync(__dirname+'/database/MANUFACTURERS/EMBRAER/models.txt', 'utf8'));
 
 app.get('/changeAirports/:id',function(req,response){
   var form = new FormData();
@@ -144,82 +148,74 @@ app.get('/stop',function(req,response){
 app.get('/orbit',function(req,response){
       request('http://'+process.env.API_IP+':'+process.env.API_PORT+'/kml/manage/initTour/Orbit')
       response.send('done')
-    })
+})
 
 
 app.get('/getAirports',function(req,res){
-  renderPlanes()
+  renderOLS()
   .then(function(data){
     res.json(data)
-
   })
-
-
-
-
-
-
 })
 
 app.get('/getSRoutes',function(req,res){
   renderSRoutes()
   .then(function(data){
     res.json(data)
-
   })
-
-
-
-
-
-
 })
 
 app.get('/getIntRoutes',function(req,res){
   renderIntRoutes()
   .then(function(data){
     res.json(data)
-
   })
-
-
-
-
-
-
 })
 
 app.get('/getCharts',function(req,res){
   renderCharts()
   .then(function(data){
     res.json(data)
-
   })
-
-
-
-
-
-
 })
 
 app.get('/getManufacturers',function(req,res){
   renderManufacturers()
   .then(function(data){
     res.json(data)
-
   })
+})
 
+app.get('/getAirbusModels',function(req,res){
+  renderAirbusModels()
+  .then(function(data){
+    res.json(data)
+  })
+})
 
+app.get('/getBoeingModels',function(req,res){
+  renderBoeingModels()
+  .then(function(data){
+    res.json(data)
+  })
+})
 
+app.get('/getBombardierModels',function(req,res){
+  renderBombardierModels()
+  .then(function(data){
+    res.json(data)
+  })
+})
 
-
-
+app.get('/getEmbraerModels',function(req,res){
+  renderEmbraerModels()
+  .then(function(data){
+    res.json(data)
+  })
 })
 
 
-function renderPlanes(){
-
+function renderOLS(){
   return new Promise(function(resolve,reject){
     var sendAir = []
     airports.forEach(function(airport){
@@ -230,12 +226,10 @@ function renderPlanes(){
       sendAir.push({id: airport.id, name: airport.name,img:base64})
     })
     resolve(sendAir)
-
   })
 }
 
 function renderSRoutes(){
-
   return new Promise(function(resolve,reject){
     var sendSRoutes = []
     sroutes.forEach(function(sroute){
@@ -246,12 +240,10 @@ function renderSRoutes(){
       sendSRoutes.push({id: sroute.id, name: sroute.name,img:base64})
     })
     resolve(sendSRoutes)
-
   })
 }
 
 function renderIntRoutes(){
-
   return new Promise(function(resolve,reject){
     var sendIntRoutes = []
     introutes.forEach(function(introute){
@@ -262,12 +254,10 @@ function renderIntRoutes(){
       sendIntRoutes.push({id: introute.id, name: introute.name,img:base64})
     })
     resolve(sendIntRoutes)
-
   })
 }
 
 function renderCharts(){
-
   return new Promise(function(resolve,reject){
     var sendCharts = []
     charts.forEach(function(chart){
@@ -278,12 +268,10 @@ function renderCharts(){
       sendCharts.push({id: chart.id, name: chart.name,cover:base64})
     })
     resolve(sendCharts)
-
   })
 }
 
 function renderManufacturers(){
-
   return new Promise(function(resolve,reject){
     var sendManufacturers = []
     manufacturers.forEach(function(manufacturer){
@@ -291,10 +279,65 @@ function renderManufacturers(){
       var contentType = 'image/png';
       var base64 = Buffer.from(data).toString('base64');
       base64='data:image/png;base64,'+base64;
-      sendManufacturers.push({id: manufacturer.id, name: manufacturer.name,img:base64})
+      sendManufacturers.push({id: manufacturer.id, name: manufacturer.name,img:base64,path:manufacturer.path})
     })
     resolve(sendManufacturers)
+  })
+}
 
+function renderAirbusModels(){
+  return new Promise(function(resolve,reject){
+    sendAirbusModels=[]
+    airbusModels.forEach(function(airbusModel){
+      var data = fs.readFileSync(airbusModel.img)
+      var contentType = 'image/png';
+      var base64 = Buffer.from(data).toString('base64');
+      base64='data:image/png;base64,'+base64;
+      sendAirbusModels.push({id: airbusModel.id, name: airbusModel.name,img:base64,lon:airbusModel.lon,lat:airbusModel.lat,range:airbusModel.range,description:airbusModel.description})
+    })
+    resolve(sendAirbusModels)
+  })
+}
+
+function renderBoeingModels(){
+  return new Promise(function(resolve,reject){
+    sendBoeingModels=[]
+    boeingModels.forEach(function(boeingModel){
+      var data = fs.readFileSync(boeingModel.img)
+      var contentType = 'image/png';
+      var base64 = Buffer.from(data).toString('base64');
+      base64='data:image/png;base64,'+base64;
+      sendBoeingModels.push({id: boeingModel.id, name: boeingModel.name,img:base64})
+    })
+    resolve(sendBoeingModels)
+  })
+}
+
+function renderBombardierModels(){
+  return new Promise(function(resolve,reject){
+    sendBombardierModels=[]
+    bombardierModels.forEach(function(bombardierModel){
+      var data = fs.readFileSync(bombardierModel.img)
+      var contentType = 'image/png';
+      var base64 = Buffer.from(data).toString('base64');
+      base64='data:image/png;base64,'+base64;
+      sendBombardierModels.push({id: bombardierModel.id, name: bombardierModel.name,img:base64})
+    })
+    resolve(sendBombardierModels)
+  })
+}
+
+function renderEmbraerModels(){
+  return new Promise(function(resolve,reject){
+    sendEmbraerModels=[]
+    embraerModels.forEach(function(embraerModel){
+      var data = fs.readFileSync(embraerModel.img)
+      var contentType = 'image/png';
+      var base64 = Buffer.from(data).toString('base64');
+      base64='data:image/png;base64,'+base64;
+      sendEmbraerModels.push({id: embraerModel.id, name: embraerModel.name,img:base64})
+    })
+    resolve(sendEmbraerModels)
   })
 }
 
