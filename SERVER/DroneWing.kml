@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="204">
+        <Style id="207">
+            <IconStyle id="208">
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="209">
+                    <href>http://192.168.86.90:8080/images/reddrone.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Placemark id="206">
+            <name>DroneWing</name>
+            <styleUrl>#207</styleUrl>
+            <Point id="205">
+                <coordinates>0.606278,41.605363,0</coordinates>
+                <altitudeMode>relativeToGround</altitudeMode>
+            </Point>
+        </Placemark>
+    </Document>
+</kml>

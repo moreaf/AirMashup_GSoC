@@ -93,7 +93,7 @@ export default {
 
         },
         stop(){
-            var myUrl = 'http://'+ process.env.VUE_APP_SERVER_IP+ ':'+process.env.VUE_APP_SERVER_PORT+'/kml/stoptour'
+            var myUrl = 'http://'+ process.env.VUE_APP_SERVER_IP+ ':'+process.env.VUE_APP_SERVER_PORT+'/kml/manage/stoptour'
             axios({
 
                 method: 'GET',

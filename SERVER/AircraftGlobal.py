@@ -5,9 +5,13 @@ from threading import Thread
 from datetime import datetime
 import time
 import math
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 class Aircraft():
-    def __init__(self, callsign,lat,lon,alt,hdg,hvel,vvel):
+    def __init__(self,icao24,callsign,lat,lon,alt,hdg,hvel,vvel):
+        self.icao24 = icao24 if icao24 is not None else "empty"
         self.alt = alt if alt is not None else 0
         self.lat = lat if lat is not None else 0
         self.lon = lon if lon is not None else 0
@@ -35,28 +39,17 @@ def getPosition1s(aircrafts):
     return aircrafts
 
 def getAircraft():
-    one = time.time()
-    api = OpenSkyApi('moreaf','Morea1234')
-    # bbox = (min latitude, max latitude, min longitude, max longitude)
-    #bbox=(35.920299, 43.891482, -10.284513, 3.824992
-
+api = OpenSkyApi(os.getenv("API_USER"),os.getenv("API_PASS"))
     s = api.get_states()
     aircrafts = []
-    two = time.time()
-    totalt= two-one
     print('API call')
-    #aircraft = np.empty((numberOfAircrafts))
 
     for state in s.states:
-        aircrafts.append(Aircraft(state.callsign,state.latitude,state.longitude,state.geo_altitude,state.heading,state.velocity,state.vertical_rate))
+        aircrafts.append(Aircraft(state.icao24.split(' ')[0],state.callsign.split(' ')[0],state.latitude,state.longitude,state.geo_altitude,state.heading,state.velocity,state.vertical_rate))
 
-
-    #aircraft = ['test',41.4669,-4.9866,12176.76,131.81,235.36,-3.25] #TESTING AIRCRAFT
     update_kml(aircrafts)
-    totalt= two-one
-    print('Done API',totalt)
     print("Total number of aircrafts:",len(aircrafts))
-    #print('API',aircraft)
+    time.sleep(5)
 
 def update_kml(aircrafts):
     kml = simplekml.Kml()
@@ -68,8 +61,18 @@ def update_kml(aircrafts):
         pnt.altitudemode = simplekml.AltitudeMode.relativetoground
         pnt.style.iconstyle.scale = 1
         pnt.style.iconstyle.heading = aircraft.hdg
-        pnt.style.iconstyle.icon.href = 'http://192.168.86.35:9000//images/planeicon.png'
-    kml.save("testkml.kml")
+        pnt.style.iconstyle.icon.href = 'http://'+os.getenv("VUE_APP_SERVER_IP")+':'+os.getenv("VUE_APP_SERVER_PORT")+'//images/planeicon.png'
+    kml.save("AircraftGlobal.kml")
+    send_kml("/Users/albert/Desktop/AirMashup_GSoC/SERVER/AircraftsGlobal.kml")
+
+def send_kml(kml_file):
+    url = 'http://'+os.getenv("API_IP")+':'+os.getenv("API_PORT")+'/kml/manage/upload'
+    file_name = kml_file.split('/')[-1]
+    multipart_form_data = {
+        'kml': (file_name, open(kml_file, 'r')),
+    }
+    response = requests.post(url, files=multipart_form_data)
+    print("> Answer received by LiquidGalaxy [%s]. "% response.status_code)
 
 s = sched.scheduler(time.time, time.sleep)
 

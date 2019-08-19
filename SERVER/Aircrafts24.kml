@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
-    <Document id="204">
-        <Style id="207">
-            <IconStyle id="208">
+    <Document id="1">
+        <Style id="4">
+            <IconStyle id="5">
                 <colorMode>normal</colorMode>
                 <scale>1</scale>
-                <heading>250.1</heading>
-                <Icon id="209">
+                <heading>284.56</heading>
+                <Icon id="6">
                     <href>http://192.168.86.90:8080/images/planeicon.png</href>
                 </Icon>
             </IconStyle>
         </Style>
-        <Placemark id="206">
-            <name>TAP1271 </name>
-            <styleUrl>#207</styleUrl>
-            <Point id="205">
-                <coordinates>-0.6798020680189358,40.90202747281369,11993.88</coordinates>
+        <Placemark id="3">
+            <name>VLG6771 </name>
+            <styleUrl>#4</styleUrl>
+            <Point id="2">
+                <coordinates>9.2766,43.8463,7627.62</coordinates>
                 <altitudeMode>relativeToGround</altitudeMode>
             </Point>
         </Placemark>

@@ -121,7 +121,6 @@ def send_kml(kml_file):
     print("> Answer received by LiquidGalaxy [%s]. "% response.status_code)
 
 
-
 print('Aircraft Icao 24 id:',sys.argv[1])
 
 while True:

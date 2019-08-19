@@ -19,7 +19,7 @@
               </v-layout>
             </v-container>
           <v-card-actions class="align-center justify-space-around">
-            <v-btn class ="elevation-20 mb-3" color="yellow darken-4" dark @click="sendKML(boeingModel.id)" >LAUNCH OLS</v-btn>
+            <v-btn class ="elevation-20 mb-3" color="yellow darken-4" dark @click="sendTour(boeingModel.name,boeingModel.lon,boeingModel.lat,boeingModel.range,boeingModel.description)" >LAUNCH MODEL</v-btn>
             <v-btn class ="elevation-20 mb-3" color="light-blue lighten-1" dark @click="orbit(boeingModel.id)" >ORBIT</v-btn>
             <v-btn class ="elevation-20 mb-3" color="red" dark @click="stop()" >STOP</v-btn>
           </v-card-actions>
@@ -103,6 +103,57 @@ export default {
                 console.log(error)
             })
 
+        },
+        flyTo(lon,lat){
+            var myUrl = 'http://'+ process.env.VUE_APP_API_IP+ ':'+process.env.VUE_APP_API_PORT+'/kml/flyto/'+lon+'/'+lat+'/5000'
+            axios({
+
+                method: 'GET',
+                url: myUrl,
+            })
+            .then(function(response){
+                console.log(response)
+            })
+            .catch(function(error){
+                console.log(error)
+            })
+        },
+        sendTour(name,lon,lat,range,des){
+          var myUrl = 'http://'+ process.env.VUE_APP_API_IP+ ':'+process.env.VUE_APP_API_PORT+'/kml/builder/addplacemark/'
+          var form = new FormData()
+          form.append('id',name)
+          form.append('name',name)
+          form.append('longitude',lon)
+          form.append('latitude',lat)
+          form.append('range',range)
+          form.append('altitudeMode','relativeToGround')
+          form.append('description',des)
+          // form.append('icon',this.maxlon)
+          // form.append('scale',this.maxlon)
+
+          axios({
+            method: 'POST',
+            url: myUrl,
+            data: form
+          }).then(function(response){
+            console.log(response.data)
+          })
+          this.flyTo(lon,lat,range)
+          this.openBalloon(name)
+        },
+        openBalloon(placemarkid){
+            var myUrl = 'http://'+ process.env.VUE_APP_API_IP+ ':'+process.env.VUE_APP_API_PORT+'/kml/manage/balloon/'+placemarkid+'/1'
+            axios({
+
+                method: 'GET',
+                url: myUrl,
+            })
+            .then(function(response){
+                console.log(response)
+            })
+            .catch(function(error){
+                console.log(error)
+            })
         }
     }
 }

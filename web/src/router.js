@@ -14,6 +14,8 @@ import Airbus from '@/components/Airbus'
 import Boeing from '@/components/Boeing'
 import Bombardier from '@/components/Bombardier'
 import Embraer from '@/components/Embraer'
+import Wing from '@/components/Wing'
+import LiveTraffic from '@/components/LiveTraffic'
 
 
 Vue.use(Router)
@@ -91,6 +93,16 @@ export default new Router({
       path: '/embraer',
       name: 'Embraer',
       component: Embraer
+    },
+    {
+      path: '/projectwing',
+      name: 'Wing',
+      component: Wing
+    },
+    {
+      path: '/livetraffic',
+      name: 'LiveTraffic',
+      component: LiveTraffic
     }
   ]
 })

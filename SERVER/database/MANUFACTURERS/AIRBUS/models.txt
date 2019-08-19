@@ -7,7 +7,7 @@
     "lon":-74.036147,
     "lat":45.678435,
     "range":0,
-    "description":"testing",
+    "description":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/AIRBUS/A220.html",
     "icon":"test",
     "scale":1
   },
@@ -19,7 +19,7 @@
     "lon":-74.036147,
     "lat":45.678435,
     "range":0,
-    "description":"testing",
+    "description":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/AIRBUS/A320.html",
     "icon":"test",
     "scale":1
   },
@@ -31,7 +31,7 @@
     "lon":-74.036147,
     "lat":45.678435,
     "range":0,
-    "description":"testing",
+    "description":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/AIRBUS/A330.html",
     "icon":"test",
     "scale":1
   },
@@ -43,7 +43,7 @@
     "lon":-74.036147,
     "lat":45.678435,
     "range":0,
-    "description":"testing",
+    "description":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/AIRBUS/A350.html",
     "icon":"test",
     "scale":1
   },
@@ -55,7 +55,7 @@
     "lon":-74.036147,
     "lat":45.678435,
     "range":0,
-    "description":"testing",
+    "description":"/Users/albert/Desktop/AirMashup_GSoC/SERVER/database/MANUFACTURERS/AIRBUS/A380.html",
     "icon":"test",
     "scale":1
   }

@@ -6,18 +6,11 @@
     </router-link>
     <v-spacer></v-spacer>
     <div class="hidden-sm-and-down">
-      <router-link to="/manufacturers">
-       <v-btn flat class='headline'>AIRCRAFT MODELS</v-btn>
-      </router-link>
-      <router-link to="/aircrafts">
-       <v-btn flat class='headline'>LIVE AIR TRAFFIC</v-btn>
-      </router-link>
-      <router-link to="/flightroutes">
-        <v-btn flat class='headline'>FLIGHT ROUTES</v-btn>
-      </router-link>
-      <router-link to="/airspace">
-        <v-btn flat class='headline'>AIRSPACE</v-btn>
-      </router-link>
+       <v-btn flat to="/manufacturers" class='headline'>AIRCRAFT MODELS</v-btn>
+       <v-btn flat to="/livetraffic" class='headline'>LIVE AIR TRAFFIC</v-btn>
+        <v-btn flat to="/flightroutes" class='headline'>FLIGHT ROUTES</v-btn>
+        <v-btn flat to="/airspace" class='headline'>AIRSPACE</v-btn>
+        <v-btn flat to="/projectwing" class='headline'>PROJECT WING</v-btn>
     </div>
       <v-navigation-drawer
         v-model="drawer"
@@ -40,8 +33,6 @@
           </v-list-tile>
         </v-list>
       </v-navigation-drawer>
-      <v-content>
-    </v-content>
   </v-toolbar>
 </template>
 

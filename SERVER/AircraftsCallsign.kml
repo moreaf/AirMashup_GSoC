@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="22">
+        <Style id="25">
+            <IconStyle id="26">
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>232.6</heading>
+                <Icon id="27">
+                    <href>http://192.168.86.90:8080/images/planeicon.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Placemark id="24">
+            <name>VLG6380 </name>
+            <styleUrl>#25</styleUrl>
+            <Point id="23">
+                <coordinates>4.275988631483768,42.45898876914278,11902.44</coordinates>
+                <altitudeMode>relativeToGround</altitudeMode>
+            </Point>
+        </Placemark>
+    </Document>
+</kml>

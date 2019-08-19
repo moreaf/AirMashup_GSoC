@@ -20,7 +20,7 @@
             </v-container>
           <v-card-actions class="align-center justify-space-around">
             <v-btn class ="elevation-20 mb-3" color="yellow darken-4" dark @click="sendTour(airbusModel.name,airbusModel.lon,airbusModel.lat,airbusModel.range,airbusModel.description)" >LAUNCH MODEL</v-btn>
-            <v-btn class ="elevation-20 mb-3" color="light-blue lighten-1" dark @click="orbit(airbusModel.id)" >ORBIT</v-btn>
+            <v-btn class ="elevation-20 mb-3" color="light-blue lighten-1" dark @click="orbit(airbusModel.name,airbusModel.lat,airbusModel.lon,airbusModel.range)" >ORBIT</v-btn>
             <v-btn class ="elevation-20 mb-3" color="red" dark @click="stop()" >STOP</v-btn>
           </v-card-actions>
       </v-card>
@@ -74,12 +74,13 @@ export default {
             })
 
         },
-        orbit(){
-            var myUrl = 'http://'+ process.env.VUE_APP_SERVER_IP+ ':'+process.env.VUE_APP_SERVER_PORT+'/kml/builder/orbit/'
+        initOrbit(name){
+            var url = 'http://'+ process.env.VUE_APP_API_IP+ ':'+process.env.VUE_APP_API_PORT+'/kml/manage/initTour/'+name
+            console.log('init orbit',url)
             axios({
 
                 method: 'GET',
-                url: myUrl,
+                url: url,
             })
             .then(function(response){
                 console.log(response)
@@ -87,28 +88,52 @@ export default {
             .catch(function(error){
                 console.log(error)
             })
-
         },
-        stop(){
-            var myUrl = 'http://'+ process.env.VUE_APP_SERVER_IP+ ':'+process.env.VUE_APP_SERVER_PORT+'/kml/stoptour'
-            axios({
+        orbit(name,lat,lon,range){
+            var myUrl = 'http://'+ process.env.VUE_APP_API_IP+ ':'+process.env.VUE_APP_API_PORT+'/kml/builder/orbit'
+            console.log(myUrl)
+            var form = new FormData()
+            form.append('id',name)
+            form.append('name',name)
+            form.append('longitude',lat)
+            form.append('latitude',lon)
+            form.append('range',10000)
 
-                method: 'GET',
-                url: myUrl,
-            })
-            .then(function(response){
-                console.log(response)
-            })
-            .catch(function(error){
-                console.log(error)
-            })
-
-        },
-        flyTo(lon,lat,range){
-            var myUrl = 'http://'+ process.env.VUE_APP_SERVER_IP+ ':'+process.env.VUE_APP_SERVER_PORT+'/kml/flyto/'+lon+'/'+lat+'/'+range
             axios({
 
                 method: 'POST',
+                url: myUrl,
+                data: form
+            })
+            .then(function(response){
+                console.log(response)
+            })
+            .catch(function(error){
+                console.log(error)
+            })
+            setTimeout(this.initOrbit(name),500)
+
+        },
+        stop(){
+            var myUrl = 'http://'+ process.env.VUE_APP_API_IP+ ':'+process.env.VUE_APP_API_PORT+'/kml/stoptour'
+            axios({
+
+                method: 'GET',
+                url: myUrl,
+            })
+            .then(function(response){
+                console.log(response)
+            })
+            .catch(function(error){
+                console.log(error)
+            })
+
+        },
+        flyTo(lon,lat){
+            var myUrl = 'http://'+ process.env.VUE_APP_API_IP+ ':'+process.env.VUE_APP_API_PORT+'/kml/flyto/'+lon+'/'+lat+'/5000'
+            axios({
+
+                method: 'GET',
                 url: myUrl,
             })
             .then(function(response){
@@ -142,7 +167,7 @@ export default {
           this.openBalloon(name)
         },
         openBalloon(placemarkid){
-            var myUrl = 'http://'+ process.env.VUE_APP_SERVER_IP+ ':'+process.env.VUE_APP_SERVER_PORT+'/kml/manage/balloon/'+placemarkid+'/1'
+            var myUrl = 'http://'+ process.env.VUE_APP_API_IP+ ':'+process.env.VUE_APP_API_PORT+'/kml/manage/balloon/'+placemarkid+'/1'
             axios({
 
                 method: 'GET',
@@ -154,7 +179,7 @@ export default {
             .catch(function(error){
                 console.log(error)
             })
-        },
+        }
     }
 }
 </script>

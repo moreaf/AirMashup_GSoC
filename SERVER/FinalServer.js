@@ -18,7 +18,7 @@ console.log(' ---- server ----')
 console.log("IP",process.env.VUE_APP_SERVER_IP)
 console.log("PORT",process.env.VUE_APP_SERVER_PORT)
 
-//app.use('/',express.static('./dist'))
+app.use('/',express.static('./'))
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -128,6 +128,15 @@ app.post('/sendAircraftZone',function(req,response){
   response.send({message:"done"})
 })
 
+app.post('/sendAircraftZone',function(req,response){
+  var minlat = req.fields.minlat || 36
+  var maxlat = req.fields.maxlat || 44
+  var minlon = req.fields.minlon || -9
+  var maxlon = req.fields.maxlon || 3
+  const child = exec(`python3 AircraftZone.py ${minlat} ${maxlat} ${minlon} ${maxlon}`);
+  response.send({message:"done"})
+})
+
 app.post('/sendAircraftIcao',function(req,response){
   var icao24 = req.fields.icao24 || "EMPTY"
 
@@ -135,6 +144,19 @@ app.post('/sendAircraftIcao',function(req,response){
   response.send({message:"done"})
 })
 
+app.post('/sendAircraftCallsign',function(req,response){
+  var callsign = req.fields.callsign || "EMPTY"
+  console.log(callsign)
+  const child = exec(`python3 AircraftCallsign.py ${callsign}`);
+  response.send({message:"done"})
+})
+
+app.post('/sendAircraftCompanies',function(req,response){
+  var callsign = req.fields.callsign || "EMPTY"
+  console.log(callsign)
+  const child = exec(`python3 AircraftCompanies.py ${callsign}`);
+  response.send({message:"done"})
+})
 
 app.get('/stop',function(req,response){
   const child = execFile('pkill', ['Python'])
@@ -214,7 +236,6 @@ app.get('/getEmbraerModels',function(req,res){
   })
 })
 
-
 function renderOLS(){
   return new Promise(function(resolve,reject){
     var sendAir = []
@@ -293,7 +314,7 @@ function renderAirbusModels(){
       var contentType = 'image/png';
       var base64 = Buffer.from(data).toString('base64');
       base64='data:image/png;base64,'+base64;
-      sendAirbusModels.push({id: airbusModel.id, name: airbusModel.name,img:base64,lon:airbusModel.lon,lat:airbusModel.lat,range:airbusModel.range,description:airbusModel.description})
+      sendAirbusModels.push({id: airbusModel.id, name: airbusModel.name,img:base64,lon:airbusModel.lon,lat:airbusModel.lat,range:airbusModel.range,description: fs.readFileSync(airbusModel.description).toString()})
     })
     resolve(sendAirbusModels)
   })
@@ -307,7 +328,7 @@ function renderBoeingModels(){
       var contentType = 'image/png';
       var base64 = Buffer.from(data).toString('base64');
       base64='data:image/png;base64,'+base64;
-      sendBoeingModels.push({id: boeingModel.id, name: boeingModel.name,img:base64})
+      sendBoeingModels.push({id: boeingModel.id, name: boeingModel.name,img:base64,lon:boeingModel.lon,lat:boeingModel.lat,range:boeingModel.range,description: fs.readFileSync(boeingModel.description).toString()})
     })
     resolve(sendBoeingModels)
   })
@@ -321,7 +342,7 @@ function renderBombardierModels(){
       var contentType = 'image/png';
       var base64 = Buffer.from(data).toString('base64');
       base64='data:image/png;base64,'+base64;
-      sendBombardierModels.push({id: bombardierModel.id, name: bombardierModel.name,img:base64})
+      sendBombardierModels.push({id: bombardierModel.id, name: bombardierModel.name,img:base64,lon:bombardierModel.lon,lat:bombardierModel.lat,range:bombardierModel.range,description: fs.readFileSync(bombardierModel.description).toString()})
     })
     resolve(sendBombardierModels)
   })
@@ -335,7 +356,7 @@ function renderEmbraerModels(){
       var contentType = 'image/png';
       var base64 = Buffer.from(data).toString('base64');
       base64='data:image/png;base64,'+base64;
-      sendEmbraerModels.push({id: embraerModel.id, name: embraerModel.name,img:base64})
+      sendEmbraerModels.push({id: embraerModel.id, name: embraerModel.name,img:base64,lon:embraerModel.lon,lat:embraerModel.lat,range:embraerModel.range,description: fs.readFileSync(embraerModel.description).toString()})
     })
     resolve(sendEmbraerModels)
   })

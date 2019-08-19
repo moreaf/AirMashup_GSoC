@@ -63,22 +63,6 @@ export default {
         return {
         }
     },
-    // methods: {
-    //     sendKML(id){
-    //         var myUrl = 'http://localhost:8080/change/' + id
-    //         axios({
-    //
-    //             method: 'GET',
-    //             url: myUrl,
-    //         })
-    //         .then(function(response){
-    //             console.log(response)
-    //         })
-    //         .catch(function(error){
-    //             console.log(error)
-    //         })
-    //
-    //     },
     }
 
 </script>
